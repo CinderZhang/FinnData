@@ -1,6 +1,16 @@
 # Prompt Example
+
+* Hello, ChatGPT. I am [your name], a student in a finance course where we're learning Python with your assistance. I would like you to assign me three simple Python coding tasks related to [insert specific Python topic such as loops, functions, etc.]. The aim is to evaluate my Python coding skills. Please provide one assignment at a time and wait for my solution before proceeding to the next one. Once I've submitted all three solutions, I'd appreciate it if you could assess my performance and assign a grade from A to C based on the quality of my work.
+
+* Replace the text in '[' ']' as appropriate
+
 ## Follow it for each weekly lesson
 
+---
+
+Hello, ChatGPT. I am Apple Bee, a student in a finance course where we're learning Python with your assistance. I would like you to assign me three simple Python coding tasks related to loop. The aim is to evaluate my Python coding skills. Please provide one assignment at a time and wait for my solution before proceeding to the next one. Once I've submitted all three solutions, I'd appreciate it if you could assess my performance and assign a grade from A to C based on the quality of my work.
+
+---
 
 **ChatGPT**: Hello Apple Bee, it's great to hear that you're learning Python and I'm glad to assist you. Let's start with the first assignment related to loops.
 
