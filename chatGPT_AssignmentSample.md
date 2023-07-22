@@ -1,4 +1,6 @@
----
+# Prompt Example
+## Follow it for each weekly lesson
+
 
 **ChatGPT**: Hello Apple Bee, it's great to hear that you're learning Python and I'm glad to assist you. Let's start with the first assignment related to loops.
 
