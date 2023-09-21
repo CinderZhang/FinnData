@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 9: Regular Expressions in Python</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Week 9: Regular Expressions in Python</h2>
+
+        <h3>Learning Objectives:</h3>
+        <ul>
+            <li>Understand the concept of regular expressions.</li>
+            <li>Learn how to use regular expressions in Python for pattern matching.</li>
+            <li>Understand how to use various regular expression methods and special sequences.</li>
+        </ul>
+
+        <h3>Materials:</h3>
+
+        <h4>1. Regular Expressions in Python</h4>
+        <p>Learn how to use regular expressions for pattern matching in strings.</p>
+        <a href="https://www.w3schools.com/python/python_regex.asp" target="_blank">Read more about Regular Expressions in Python</a>
+
+        <h4>2. Online Regular Expression Tester</h4>
+        <p>Use this online tool to test your regular expressions.</p>
+        <a href="https://regex101.com/" target="_blank">Regex101 - Online Regular Expression Tester</a>
+
+        <h3>Exercises:</h3>
+        <ol>
+            <li>Write a Python program to check if a given string is a valid email address using regular expressions.</li>
+            <li>Write a Python program that uses regular expressions to find all dates in a given text.</li>
+            <li>Create a Python program that uses regular expressions to replace all occurrences of numbers in a string with the word "number".</li>
+            <li>Write a Python program to extract and print all URLs from a webpage using regular expressions.</li>
+            <li>Create a Python program that uses regular expressions to validate a password based on certain criteria (e.g., at least one uppercase letter, at least one digit, etc.).</li>
+            <li>Write a Python program to extract all the email addresses from a given text using regular expressions.</li>
+            <li>Write a Python program that uses regular expressions to split a string by multiple delimiters.</li>
+        </ol>
+
+        <h3>Additional Examples:</h3>
+        <p>Here are some common regular expression patterns:</p>
+        <ul>
+            <li><strong>Email:</strong> ^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$</li>
+            <li><strong>URL:</strong> http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+</li>
+            <li><strong>Date (MM/DD/YYYY):</strong> ^(0[1-9]|1[0-2])/(0[1-9]|1[0-9]|2[0-9]|3[0-1])/(19|20)\d\d$</li>
+            <li><strong>Phone Number:</strong> ^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$</li>
+        </ul>
+
+        <p>You can use these patterns in your Python programs with the `re` module. For example:</p>
+        <pre>
+import re
+
+pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+email = "example@email.com"
+
+if re.match(pattern, email):
+    print("Valid email")
+else:
+    print("Invalid email")
+        </pre>
+
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="week8.html">← Previous Week</a>
+        |
+        <a href="week10.html">Next Week →</a>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
