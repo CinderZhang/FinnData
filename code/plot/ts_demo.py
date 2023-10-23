@@ -147,7 +147,8 @@ plt.show()
 from statsmodels.tsa.arima.model import ARIMA
 
 # Fit the ARIMA model
-model = ARIMA(filtered_returns, order=(1, 0, 0))
+# General idea of ARIMA: https://docs.google.com/document/d/1zpFHGSBd5pZzAyZg1In5YNlHGRRl5UUIRlQeULBE4mk/edit?usp=sharing
+model = ARIMA(filtered_returns, order=(5, 0, 0))
 model_fit = model.fit()
 
 # Forecast the returns
