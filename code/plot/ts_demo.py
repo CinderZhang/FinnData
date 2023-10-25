@@ -165,4 +165,61 @@ plt.legend()
 plt.show()
 
 
+# %% download WMT 10 years of quarterly revenue and ebitda data from yahoo finance
+from yahoofinancials import YahooFinancials
+import pandas as pd
+ticker = 'AAPL'
+yahoo_financials = YahooFinancials(ticker)
+eps = yahoo_financials.get_earnings_per_share()
+
+# %% more information about AAPL
+# balance_sheet_data_qt = yahoo_financials.get_financial_stmts('quarterly', 'balance')
+# income_statement_data_qt = yahoo_financials.get_financial_stmts('quarterly', 'income')
+all_statement_data_qt =  yahoo_financials.get_financial_stmts('quarterly', ['income', 'cash', 'balance'])
+# apple_earnings_data = yahoo_financials.get_stock_earnings_data()
+# apple_net_income = yahoo_financials.get_net_income()
+# historical_stock_prices = yahoo_financials.get_historical_price_data('2008-09-15', '2018-09-15', 'weekly')
+# %% save the dictionary to a json file
+import json
+with open('financialstatements.json', 'w') as fp:
+    json.dump(all_statement_data_qt, fp)
+    
+
+# %% read the json file and extract net incomes
+import json
+import pandas as pd
+
+# Initialize empty lists to store the net income and corresponding dates
+net_income_common_stockholders = []
+net_income = []
+dates = []
+
+# Read the uploaded JSON file
+file_path = 'financialstatements.json'  # Replace with the path to your JSON file
+with open(file_path, 'r') as f:
+    financial_data = json.load(f)
+
+# Extract the net income and dates
+try:
+    for company, statements in financial_data['incomeStatementHistoryQuarterly'].items():
+        for statement in statements:
+            for date, metrics in statement.items():
+                dates.append(date)
+                net_income_common_stockholders.append(metrics.get('netIncomeCommonStockholders', None))
+                net_income.append(metrics.get('netIncome', None))
+except KeyError as e:
+    print(f"KeyError: {e} not found in the data")
+
+# Combine extracted data into a DataFrame
+df = pd.DataFrame({
+    'Date': dates,
+    'Net Income (Common Stockholders)': net_income_common_stockholders,
+    'Net Income': net_income
+})
+
+# Show the DataFrame (you can also save it to a CSV or any other format)
+print(df)
+
+
+
 # %%
