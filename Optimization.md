@@ -11,6 +11,7 @@ To perform portfolio optimization using Python's SciPy package and data from WRD
 ### Resources:
 
 - Equity Data: [WRDS CRSP and Compustat in Python](https://www.tidy-finance.org/python/wrds-crsp-and-compustat.html)
+- [Less general, but Easier way to Connect to WRDS]
 - Fixed Income Data: [WRDS Bond Returns](https://wrds-www.wharton.upenn.edu/pages/get-data/wrds-bond-returns/) and [TRACE and FISD in Python](https://www.tidy-finance.org/python/trace-and-fisd.html)
 - Code Sample for Portfolio Optimization: [Towards Data Science Article](https://towardsdatascience.com/efficient-frontier-portfolio-optimisation-in-python-e7844051e7f)
 
