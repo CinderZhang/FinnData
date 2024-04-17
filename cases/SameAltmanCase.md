@@ -28,3 +28,6 @@ In a significant event that caught the attention of the tech and financial world
 
 ## Conclusion
 This case study highlights the critical influence of executive leadership changes on investor sentiment and stock market performance, particularly in high-stakes industries like technology and AI. Microsoft's adept handling of the unexpected leadership change at a key partner showcased its strategic agility and commitment to maintaining a leading edge in AI, which was positively reflected in its stock performance during this turbulent period. This scenario is a valuable learning point for students studying market dynamics, demonstrating how swiftly markets can react to news and how strategic decisions by companies can mitigate potential negative impacts.
+
+## Stock price chart:
+hyper link: https://yhoo.it/3QjaqMa
