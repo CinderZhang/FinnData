@@ -5,86 +5,238 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 7: Data Cleaning and Preprocessing with Pandas</title>
+    <title>Week 7: Financial Data Visualization</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .key-concept {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .exercise {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .resource-link {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .research-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .chatgpt-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .code-example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+   
     <div class="container">
-
-  <h1>Week 7: Data Cleaning and Preprocessing with Pandas</h1>
-
-  <h2>Objectives</h2>
-  <ul>
-    <li>Understand the importance of clean data for analysis.</li>
-    <li>Learn how to handle missing data and outliers.</li>
-    <li>Get hands-on experience with data standardization and computing stock returns.</li>
-  </ul>
-
-  <h2>Topics Covered</h2>
-
-  <h3>Introduction to Data Cleaning</h3>
-  <ul>
-    <li><a href="https://realpython.com/python-data-cleaning-numpy-pandas/">Learn More About Data Cleaning</a></li>
-  </ul>
-
-  <h3>Handling Missing Data and Outliers</h3>
-  <ul>
-    <li><a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html">Pandas Guide on Missing Data</a></li>
-    <li><a href="https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/">Handling Outliers</a></li>  
-  </ul>
-
-  <h3>Data Standardization and Transformation</h3>
-  <ul>
-    <li><a href="https://towardsdatascience.com/data-preprocessing-with-python-pandas-part-3-normalisation-5b5392d27673">Normalization</a></li>
-    <li><a href="https://scikit-learn.org/stable/modules/preprocessing.html">Advanced Data Transformation Techniques</a></li>
-    <li><a href="https://medium.com/the-handbook-of-coding-in-finance/a-quick-guide-to-calculating-stock-returns-with-python-ec5afac71bde">Computing Stock Returns</a></li>
-  </ul>
-
-  <h2>Exercises</h2>
-  <ol>
-    <li>Use Pandas to find and handle missing data in a given dataset.</li>
-    <li>Identify outliers in a dataset and decide how to handle them.</li>
-    <li>Standardize a dataset using Pandas.</li>
-    <li>Compute the daily and monthly returns for a given stock dataset.</li>
-  </ol>
-  <div class="container">
-    <h3>Important Reminder:</h3>
-    <div class="alert alert-warning">
-        <h4>Weekly Tasks:</h4>
-        <div id="ChatGPT Lead deep dive">
-            <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-            <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
+        <div class="key-concept">
+            <h2>Week 7: Financial Data Visualization</h2>
+            <p class="lead">Learn how to create professional financial charts and visualizations using matplotlib and seaborn. Master the art of communicating financial insights through effective data visualization.</p>
         </div>
-        
-        <div id="ChatGPT Assignment">
-            <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-            <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
+
+        <h3>Learning Objectives:</h3>
+        <ul>
+            <li>✓ Master matplotlib for financial charts</li>
+            <li>✓ Create advanced visualizations with seaborn</li>
+            <li>✓ Build interactive financial dashboards</li>
+            <li>✓ Learn best practices for financial visualization</li>
+        </ul>
+
+        <div class="resource-link">
+            <h4>1. Basic Financial Charts with Matplotlib</h4>
+            <p>Creating fundamental financial charts using matplotlib.</p>
+            <div class="code-example">
+                <pre>
+import matplotlib.pyplot as plt
+import yfinance as yf
+import pandas as pd
+
+# Download stock data
+aapl = yf.download('AAPL', start='2023-01-01', end='2023-12-31')
+
+# Create a price chart
+plt.figure(figsize=(12, 6))
+plt.plot(aapl.index, aapl['Adj Close'], label='AAPL')
+plt.title('Apple Stock Price (2023)')
+plt.xlabel('Date')
+plt.ylabel('Price ($)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Create volume bars
+plt.figure(figsize=(12, 6))
+plt.bar(aapl.index, aapl['Volume'], alpha=0.5)
+plt.title('Trading Volume')
+plt.xlabel('Date')
+plt.ylabel('Volume')
+plt.show()</pre>
+            </div>
+            <a href="https://matplotlib.org/stable/tutorials/introductory/pyplot.html" target="_blank">Read more about Matplotlib</a>
+            <div class="research-tip">
+                <p>📚 <strong>Can't access the link?</strong> Use <a href="https://www.perplexity.ai/" target="_blank">Perplexity.ai</a> and search for "matplotlib financial charts tutorial"</p>
+            </div>
+        </div>
+
+        <div class="resource-link">
+            <h4>2. Advanced Charts with Seaborn</h4>
+            <p>Creating statistical visualizations for financial analysis.</p>
+            <div class="code-example">
+                <pre>
+import seaborn as sns
+
+# Calculate daily returns
+returns = aapl['Adj Close'].pct_change()
+
+# Create a distribution plot
+plt.figure(figsize=(10, 6))
+sns.histplot(returns.dropna(), kde=True)
+plt.title('Distribution of Daily Returns')
+plt.xlabel('Returns')
+plt.show()
+
+# Create a correlation heatmap
+portfolio = yf.download(['AAPL', 'MSFT', 'GOOGL'], 
+                       start='2023-01-01', 
+                       end='2023-12-31')['Adj Close']
+corr = portfolio.corr()
+plt.figure(figsize=(8, 6))
+sns.heatmap(corr, annot=True, cmap='coolwarm')
+plt.title('Correlation Matrix')
+plt.show()</pre>
+            </div>
+            <a href="https://seaborn.pydata.org/tutorial.html" target="_blank">Read more about Seaborn</a>
+        </div>
+
+        <div class="resource-link">
+            <h4>3. Technical Analysis Charts</h4>
+            <p>Creating technical analysis visualizations.</p>
+            <div class="code-example">
+                <pre>
+# Calculate moving averages
+aapl['MA50'] = aapl['Adj Close'].rolling(window=50).mean()
+aapl['MA200'] = aapl['Adj Close'].rolling(window=200).mean()
+
+# Create technical analysis chart
+plt.figure(figsize=(12, 6))
+plt.plot(aapl.index, aapl['Adj Close'], label='Price')
+plt.plot(aapl.index, aapl['MA50'], label='50-day MA')
+plt.plot(aapl.index, aapl['MA200'], label='200-day MA')
+plt.title('Technical Analysis Chart')
+plt.xlabel('Date')
+plt.ylabel('Price ($)')
+plt.legend()
+plt.grid(True)
+plt.show()</pre>
+            </div>
+        </div>
+
+        <h3>Exercises:</h3>
+        <div class="exercise">
+            <ol>
+                <li>Create a comprehensive stock analysis dashboard:
+                    <ul>
+                        <li>Price chart with moving averages</li>
+                        <li>Volume analysis</li>
+                        <li>Returns distribution</li>
+                        <li>Technical indicators</li>
+                    </ul>
+                </li>
+                <li>Build a portfolio visualization tool:
+                    <ul>
+                        <li>Asset allocation pie chart</li>
+                        <li>Performance comparison</li>
+                        <li>Risk-return scatter plot</li>
+                        <li>Correlation heatmap</li>
+                    </ul>
+                </li>
+                <li>Implement candlestick charts:
+                    <ul>
+                        <li>OHLC candlestick patterns</li>
+                        <li>Volume overlay</li>
+                        <li>Support/resistance levels</li>
+                    </ul>
+                </li>
+                <li>Create market analysis visualizations:
+                    <ul>
+                        <li>Sector performance comparison</li>
+                        <li>Market breadth indicators</li>
+                        <li>Index correlations</li>
+                    </ul>
+                </li>
+                <li>Develop risk analysis charts:
+                    <ul>
+                        <li>Value at Risk (VaR) visualization</li>
+                        <li>Risk metrics dashboard</li>
+                        <li>Volatility analysis</li>
+                    </ul>
+                </li>
+                <li>Build an options analysis dashboard:
+                    <ul>
+                        <li>Option chain visualization</li>
+                        <li>Implied volatility surface</li>
+                        <li>Greeks analysis charts</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="chatgpt-tip">
+            <h4>💡 ChatGPT Learning Tips</h4>
+            <p>Use these prompts to enhance your learning:</p>
+            <ol>
+                <li>"Show me how to create a professional-looking stock chart with matplotlib"</li>
+                <li>"Help me understand how to customize seaborn plots for financial data"</li>
+                <li>"Explain how to create effective technical analysis visualizations"</li>
+                <li>"What are the best practices for financial dashboard design?"</li>
+            </ol>
         </div>
     </div>
-</div>
-  
-  <h2>Additional Resources</h2>
-  <ul>
-    <li><a href="https://towardsdatascience.com/data-cleaning-with-python-and-pandas-detecting-missing-values-3e9c6ebcf78b">Advanced Data Cleaning Techniques</a></li>
-    <li><a href="https://www.datacamp.com/community/tutorials/preprocessing-in-data-science-part-1-centering-scaling-and-knn">Data Preprocessing for Finance</a></li>
-  </ul>
-  </div>
-  <div style="text-align: center; margin-top: 20px;">
-    <a href="week6.html">← Previous Week</a>
-    |
-    <a href="week8.html">Next Week →</a>
-  </div>
-    <!-- Add the Back to Home button at the bottom as well -->
+    
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="week6.html">← Previous Week</a>
+        |
+        <a href="week8.html">Next Week →</a>
+    </div>
+
     <div class="back-to-home">
-      <a href="index.html">← Back to Home</a>
-  </div>
+        <a href="index.html">← Back to Home</a>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
+
 </html>

@@ -7,69 +7,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 2: Python Basics: Variables, Data Types, and Operations</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .key-concept {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .exercise {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .resource-link {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .research-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .chatgpt-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+   
     <div class="container">
-        <h2>Week 2: Python Basics: Variables, Data Types, and Operations</h2>
+        <div class="key-concept">
+            <h2>Week 2: Python Basics: Variables, Data Types, and Operations</h2>
+            <p class="lead">Learn the fundamental building blocks of Python programming with a focus on financial calculations.</p>
+        </div>
 
         <h3>Learning Objectives:</h3>
         <ul>
-            <li>Understand variables and data types in Python.</li>
-            <li>Perform basic operations with variables.</li>
-            <li>Learn how to take input and produce output in Python programs.</li>
+            <li>✓ Understand variables and data types in Python</li>
+            <li>✓ Perform basic operations with variables</li>
+            <li>✓ Learn how to take input and produce output in Python programs</li>
         </ul>
 
-        <h3>Materials:</h3>
+        <div class="resource-link">
+            <h4>1. Variables in Python</h4>
+            <p>What are variables? How to declare and assign values to variables in Python.</p>
+            <a href="https://www.w3schools.com/python/python_variables.asp" target="_blank">Read more about Variables in Python</a>
+            <div class="research-tip">
+                <p>📚 <strong>Can't access the link?</strong> Use <a href="https://www.perplexity.ai/" target="_blank">Perplexity.ai</a> and search for "Python variables basics tutorial"</p>
+            </div>
+        </div>
 
-        <h4>1. Variables in Python</h4>
-        <p>What are variables? How to declare and assign values to variables in Python.</p>
-        <a href="https://www.w3schools.com/python/python_variables.asp" target="_blank">Read more about Variables in Python</a>
+        <div class="resource-link">
+            <h4>2. Data Types in Python</h4>
+            <p>Understanding different data types in Python: integers, floats, strings, booleans.</p>
+            <a href="https://www.w3schools.com/python/python_datatypes.asp" target="_blank">Read more about Data Types in Python</a>
+        </div>
 
-        <h4>2. Data Types in Python</h4>
-        <p>Understanding different data types in Python: integers, floats, strings, booleans.</p>
-        <a href="https://www.w3schools.com/python/python_datatypes.asp" target="_blank">Read more about Data Types in Python</a>
+        <div class="resource-link">
+            <h4>3. Basic Operations</h4>
+            <p>Performing arithmetic and logical operations with variables in Python.</p>
+            <a href="https://www.w3schools.com/python/python_operators.asp" target="_blank">Read more about Basic Operations in Python</a>
+        </div>
 
-        <h4>3. Basic Operations</h4>
-        <p>Performing arithmetic and logical operations with variables in Python.</p>
-        <a href="https://www.w3schools.com/python/python_operators.asp" target="_blank">Read more about Basic Operations in Python</a>
-
-        <h4>4. Input and Output in Python</h4>
-        <p>How to take input from the user and display output in Python programs.</p>
-        <a href="https://www.w3schools.com/python/python_user_input.asp" target="_blank">Read more about Input and Output in Python</a>
+        <div class="resource-link">
+            <h4>4. Input and Output in Python</h4>
+            <p>How to take input from the user and display output in Python programs.</p>
+            <a href="https://www.w3schools.com/python/python_user_input.asp" target="_blank">Read more about Input and Output in Python</a>
+        </div>
 
         <h3>Exercises:</h3>
-        <ol>
-            <li>Create variables of different data types and perform operations on them.</li>
-            <li>Write a Python program that takes input from the user and displays it.</li>
-            <li>Practice type conversion by taking input as a string and converting it to an integer or float to perform arithmetic operations.</li>
-            <li>Write a Python program to calculate the area of a rectangle. Take the length and width as inputs from the user.</li>
-            <li>Create a simple calculator that can add, subtract, multiply, and divide two numbers entered by the user.</li>
-            <li>Write a Python program that takes a temperature in Celsius and converts it to Fahrenheit.</li>
-            <li>Write a Python program that reverses a string entered by the user.</li>
-        </ol>
-    </div>
+        <div class="exercise">
+            <ol>
+                <li>Create variables of different data types (int, float, string) to store financial data:
+                    <ul>
+                        <li>Stock price (float)</li>
+                        <li>Number of shares (int)</li>
+                        <li>Company ticker symbol (string)</li>
+                    </ul>
+                </li>
+                <li>Write a program that calculates the total value of a stock position (price × number of shares)</li>
+                <li>Create a simple interest calculator that takes principal, rate, and time as inputs</li>
+                <li>Write a program that converts currency (e.g., USD to EUR) using a fixed exchange rate</li>
+                <li>Create a program that calculates the future value of an investment after n years</li>
+                <li>Write a program that calculates monthly loan payments given principal, interest rate, and years</li>
+            </ol>
+        </div>
 
-    <div class="container">
-        <h3>Important Reminder:</h3>
-        <div class="alert alert-warning">
-            <h4>Weekly Tasks:</h4>
-            <div id="ChatGPT Lead deep dive">
-                <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-                <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
-            </div>
-            
-            <div id="ChatGPT Assignment">
-                <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-                <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
-            </div>
+        <div class="chatgpt-tip">
+            <h4>💡 ChatGPT Learning Tips</h4>
+            <p>Use these prompts to enhance your learning:</p>
+            <ol>
+                <li>"Explain Python data types using financial examples (stock prices, share counts, company names)"</li>
+                <li>"Show me how to write a simple interest calculator in Python and explain each variable type"</li>
+                <li>"What are the common mistakes when working with floating-point numbers in financial calculations?"</li>
+                <li>"How do I format currency output in Python to show exactly 2 decimal places?"</li>
+            </ol>
         </div>
     </div>
     
@@ -78,10 +129,10 @@
         |
         <a href="week3.html">Next Week →</a>
     </div>
-        <!-- Add the Back to Home button at the bottom as well -->
-        <div class="back-to-home">
-            <a href="index.html">← Back to Home</a>
-        </div>
+
+    <div class="back-to-home">
+        <a href="index.html">← Back to Home</a>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

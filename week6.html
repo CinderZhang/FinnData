@@ -5,77 +5,214 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 6: Working with Financial Data using Pandas</title>
+    <title>Week 6: Pandas and Financial Data Analysis</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .key-concept {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .exercise {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .resource-link {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .research-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .chatgpt-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .code-example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+   
     <div class="container">
-        <h2>Week 6: Working with Financial Data using Pandas</h2>
+        <div class="key-concept">
+            <h2>Week 6: Pandas and Financial Data Analysis</h2>
+            <p class="lead">Learn how to use pandas for financial data analysis and fetch real market data using yfinance and pandas_datareader.</p>
+        </div>
 
         <h3>Learning Objectives:</h3>
         <ul>
-            <li>Understand the basics of the Pandas library in Python.</li>
-            <li>Learn how to load and manipulate financial data using Pandas.</li>
-            <li>Understand how to perform basic financial analysis using Pandas.</li>
-            <li>Learn how to fetch financial data from APIs using Python.</li>
+            <li>✓ Master pandas DataFrame operations for financial data</li>
+            <li>✓ Learn to fetch real market data using yfinance</li>
+            <li>✓ Understand time series analysis with pandas</li>
+            <li>✓ Create financial reports and visualizations</li>
         </ul>
 
-        <h3>Materials:</h3>
+        <div class="resource-link">
+            <h4>1. Introduction to Pandas</h4>
+            <p>Understanding pandas DataFrame basics for financial data.</p>
+            <div class="code-example">
+                <pre>
+import pandas as pd
+import numpy as np
 
-        <h4>1. Introduction to Pandas</h4>
-        <p>Learn the basics of the Pandas library, which is essential for data manipulation and analysis in Python.</p>
-        <a href="https://pandas.pydata.org/pandas-docs/stable/getting_started/intro_tutorials/" target="_blank">Pandas Getting Started Tutorials</a>
+# Create a DataFrame with stock data
+data = {
+    'Symbol': ['AAPL', 'MSFT', 'GOOGL'],
+    'Price': [190.50, 375.00, 140.50],
+    'Shares': [100, 50, 75]
+}
+df = pd.DataFrame(data)
 
-        <h4>2. Working with Financial Data</h4>
-        <p>Learn how to load, manipulate, and analyze financial data using the Pandas library.</p>
-        <a href="https://python-programming.quantecon.org/pandas.html" target="_blank">Working with Financial and Economic Data in Python</a>
+# Calculate position values
+df['Position Value'] = df['Price'] * df['Shares']
 
-        <h4>3. Fetching Financial Data from APIs</h4>
-        <p>Learn how to fetch financial data from APIs using Python.</p>
-        <a href="https://towardsdatascience.com/how-to-get-stock-data-using-python-c0de1df17e75" target="_blank">How to Get Stock Data Using Python</a>
-        
-        <h4>4. Fetching Financial Data from Professional Financial Data Services</h4>
-        <p>Learn how to fetch financial data from WRDS using Python.</p>
-        <a href="https://wrds-www.wharton.upenn.edu/pages/classroom/using-jupyter-at-wrds-notebook/" target="_blank">WRDS Data Using Python</a>
+# Basic statistics
+print(df.describe())  # Summary statistics
+print(df.groupby('Symbol').sum())  # Group by symbol</pre>
+            </div>
+            <a href="https://pandas.pydata.org/docs/getting_started/index.html" target="_blank">Read more about Pandas</a>
+            <div class="research-tip">
+                <p>📚 <strong>Can't access the link?</strong> Use <a href="https://www.perplexity.ai/" target="_blank">Perplexity.ai</a> and search for "pandas DataFrame tutorial for finance"</p>
+            </div>
+        </div>
 
-            <h4>5. WRDS classroom</h4>
-        <p>Learn how to access WRDS.</p>
-        <a href="https://wrds-www.wharton.upenn.edu/pages/classroom/" target="_blank">WRDS Classroom</a>    
+        <div class="resource-link">
+            <h4>2. Fetching Market Data</h4>
+            <p>Using yfinance and pandas_datareader to get real market data.</p>
+            <div class="code-example">
+                <pre>
+import yfinance as yf
+import pandas_datareader as pdr
+
+# Download Apple stock data
+aapl = yf.download('AAPL', 
+                   start='2023-01-01', 
+                   end='2023-12-31')
+
+# Calculate daily returns
+aapl['Returns'] = aapl['Adj Close'].pct_change()
+
+# Get multiple stocks using pandas_datareader
+tickers = ['AAPL', 'MSFT', 'GOOGL']
+portfolio = pdr.get_data_yahoo(tickers, 
+                             start='2023-01-01',
+                             end='2023-12-31')['Adj Close']
+
+# Calculate correlation matrix
+correlation = portfolio.corr()</pre>
+            </div>
+            <a href="https://pypi.org/project/yfinance/" target="_blank">Read more about yfinance</a>
+        </div>
+
+        <div class="resource-link">
+            <h4>3. Time Series Analysis</h4>
+            <p>Working with financial time series in pandas.</p>
+            <div class="code-example">
+                <pre>
+# Resample data to monthly frequency
+monthly = aapl['Adj Close'].resample('M').last()
+
+# Calculate moving averages
+aapl['MA50'] = aapl['Adj Close'].rolling(window=50).mean()
+aapl['MA200'] = aapl['Adj Close'].rolling(window=200).mean()
+
+# Generate trading signals
+aapl['Signal'] = np.where(aapl['MA50'] > aapl['MA200'], 1, -1)
+
+# Calculate returns by time period
+returns = {
+    'Daily': aapl['Returns'].mean(),
+    'Monthly': aapl['Returns'].resample('M').mean(),
+    'Annual': aapl['Returns'].resample('Y').mean()
+}</pre>
+            </div>
+        </div>
 
         <h3>Exercises:</h3>
-        <ol>
-            <li>Fetch stock data from an API and load it into a Pandas DataFrame. </li>
-            <li>Load a dataset of stock prices into a Pandas DataFrame and calculate the daily returns.</li>
-            <li>Calculate the moving average of a stock price over a given window of days.</li>
-            <li>Use Pandas to merge data from multiple stocks into a single DataFrame and analyze the correlations between their daily returns.</li>
-            <li>Create a portfolio of stocks and calculate its overall returns and risk using Pandas.</li>
-            <li>Visualize the historical stock prices and moving averages using Pandas plotting functionality.</li>
-            <li>Fetch stock data from WRDS and load it into a Pandas DataFrame. Perform some basic analysis on this data.</li>
+        <div class="exercise">
+            <ol>
+                <li>Create a market data dashboard:
+                    <ul>
+                        <li>Download data for multiple stocks using yfinance</li>
+                        <li>Calculate daily returns and volatility</li>
+                        <li>Generate performance summary using pandas</li>
+                    </ul>
+                </li>
+                <li>Implement a technical analysis system:
+                    <ul>
+                        <li>Calculate various moving averages</li>
+                        <li>Generate trading signals</li>
+                        <li>Backtest strategy performance</li>
+                    </ul>
+                </li>
+                <li>Build a portfolio analysis tool:
+                    <ul>
+                        <li>Track multiple stocks performance</li>
+                        <li>Calculate portfolio statistics</li>
+                        <li>Generate risk metrics (Beta, Sharpe Ratio)</li>
+                    </ul>
+                </li>
+                <li>Create a market sentiment analyzer:
+                    <ul>
+                        <li>Download index data (S&P 500, NASDAQ)</li>
+                        <li>Calculate market breadth indicators</li>
+                        <li>Generate market health report</li>
+                    </ul>
+                </li>
+                <li>Develop a dividend analysis tool:
+                    <ul>
+                        <li>Download dividend history</li>
+                        <li>Calculate dividend growth rates</li>
+                        <li>Project future dividend income</li>
+                    </ul>
+                </li>
+                <li>Create a sector rotation analysis:
+                    <ul>
+                        <li>Download sector ETF data</li>
+                        <li>Compare sector performance</li>
+                        <li>Identify sector trends</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
 
-        </ol>
-    </div>
-
-    <div class="container">
-        <h3>Important Reminder:</h3>
-        <div class="alert alert-warning">
-            <h4>Weekly Tasks:</h4>
-            <div id="ChatGPT Lead deep dive">
-                <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-                <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
-            </div>
-            
-            <div id="ChatGPT Assignment">
-                <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-                <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
-            </div>
+        <div class="chatgpt-tip">
+            <h4>💡 ChatGPT Learning Tips</h4>
+            <p>Use these prompts to enhance your learning:</p>
+            <ol>
+                <li>"Show me how to handle missing data in pandas with financial time series"</li>
+                <li>"Explain how to calculate rolling statistics for stock prices"</li>
+                <li>"Help me understand how to merge data from different sources in pandas"</li>
+                <li>"What are the best practices for handling dates in financial data analysis?"</li>
+            </ol>
         </div>
     </div>
     
@@ -84,10 +221,10 @@
         |
         <a href="week7.html">Next Week →</a>
     </div>
-        <!-- Add the Back to Home button at the bottom as well -->
-        <div class="back-to-home">
-            <a href="index.html">← Back to Home</a>
-        </div>
+
+    <div class="back-to-home">
+        <a href="index.html">← Back to Home</a>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

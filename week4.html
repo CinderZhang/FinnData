@@ -7,64 +7,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 4: Functions in Python</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .key-concept {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .exercise {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .resource-link {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .research-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .chatgpt-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .code-example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+   
     <div class="container">
-        <h2>Week 4: Functions in Python</h2>
+        <div class="key-concept">
+            <h2>Week 4: Functions in Python</h2>
+            <p class="lead">Learn how to create reusable functions for financial calculations and analysis. Functions are essential for organizing code and building complex financial models.</p>
+        </div>
 
         <h3>Learning Objectives:</h3>
         <ul>
-            <li>Understand the concept of functions in programming.</li>
-            <li>Learn how to define and call functions in Python.</li>
-            <li>Understand the importance of code reusability and modular programming.</li>
+            <li>✓ Understand the concept of functions in programming</li>
+            <li>✓ Learn how to define and call functions in Python</li>
+            <li>✓ Understand function parameters and return values</li>
+            <li>✓ Create reusable financial calculation functions</li>
         </ul>
 
-        <h3>Materials:</h3>
+        <div class="resource-link">
+            <h4>1. Defining and Calling Functions</h4>
+            <p>Learn how to create and use functions in your Python programs.</p>
+            <a href="https://www.w3schools.com/python/python_functions.asp" target="_blank">Read more about Functions in Python</a>
+            <div class="research-tip">
+                <p>📚 <strong>Can't access the link?</strong> Use <a href="https://www.perplexity.ai/" target="_blank">Perplexity.ai</a> and search for "Python functions tutorial with examples"</p>
+            </div>
+        </div>
 
-        <h4>1. Defining and Calling Functions</h4>
-        <p>Learn how to define functions and call them in your Python programs.</p>
-        <a href="https://www.w3schools.com/python/python_functions.asp" target="_blank">Read more about Defining and Calling Functions in Python</a>
+        <div class="resource-link">
+            <h4>2. Function Parameters and Arguments</h4>
+            <p>Understanding how to pass data to functions and handle different types of parameters.</p>
+            <div class="code-example">
+                <pre>
+def calculate_roi(initial_investment, final_value):
+    return (final_value - initial_investment) / initial_investment * 100</pre>
+            </div>
+            <a href="https://www.w3schools.com/python/python_functions.asp" target="_blank">Read more about Function Parameters</a>
+        </div>
 
-        <h4>2. Function Parameters and Arguments</h4>
-        <p>Understand how to pass parameters and arguments to functions.</p>
-        <a href="https://www.w3schools.com/python/python_functions.asp" target="_blank">Read more about Function Parameters and Arguments in Python</a>
-
-        <h4>3. Return Values</h4>
-        <p>Learn how functions can return values that can be used in your program.</p>
-        <a href="https://www.w3schools.com/python/python_functions.asp" target="_blank">Read more about Return Values in Python</a>
+        <div class="resource-link">
+            <h4>3. Return Values</h4>
+            <p>Learn how functions can return calculated values for use in your program.</p>
+            <div class="code-example">
+                <pre>
+def calculate_monthly_payment(principal, rate, years):
+    r = rate / 12 / 100  # Monthly rate
+    n = years * 12       # Total months
+    return principal * (r * (1 + r)**n) / ((1 + r)**n - 1)</pre>
+            </div>
+        </div>
 
         <h3>Exercises:</h3>
-        <ol>
-            <li>Write a Python function that takes two numbers as parameters and returns their sum.</li>
-            <li>Write a Python function that takes a list of numbers and returns the maximum value.</li>
-            <li>Write a Python function that takes a string and returns the number of words in the string.</li>
-            <li>Create a Python function that calculates the area of a circle given its radius.</li>
-            <li>Write a Python function that takes an integer n and returns the nth Fibonacci number.</li>
-            <li>Create a Python function that takes a list of strings and returns a list of their lengths.</li>
-        </ol>
-    </div>
+        <div class="exercise">
+            <ol>
+                <li>Create a function library for financial calculations:
+                    <ul>
+                        <li>Present Value (PV)</li>
+                        <li>Future Value (FV)</li>
+                        <li>Net Present Value (NPV)</li>
+                        <li>Internal Rate of Return (IRR)</li>
+                    </ul>
+                </li>
+                <li>Write a function that calculates stock metrics:
+                    <ul>
+                        <li>Daily returns</li>
+                        <li>Volatility</li>
+                        <li>Sharpe ratio</li>
+                    </ul>
+                </li>
+                <li>Create a bond pricing function that:
+                    <ul>
+                        <li>Takes face value, coupon rate, years to maturity, and market rate</li>
+                        <li>Returns the current bond price</li>
+                    </ul>
+                </li>
+                <li>Write a portfolio analysis function that:
+                    <ul>
+                        <li>Takes a list of stock prices and weights</li>
+                        <li>Calculates portfolio return and risk</li>
+                        <li>Returns a summary dictionary</li>
+                    </ul>
+                </li>
+                <li>Create a loan amortization function that generates a payment schedule</li>
+                <li>Write a function to calculate various risk metrics (Beta, Standard Deviation, etc.)</li>
+            </ol>
+        </div>
 
-    <div class="container">
-        <h3>Important Reminder:</h3>
-        <div class="alert alert-warning">
-            <h4>Weekly Tasks:</h4>
-            <div id="ChatGPT Lead deep dive">
-                <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-                <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
-            </div>
-            
-            <div id="ChatGPT Assignment">
-                <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-                <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
-            </div>
+        <div class="chatgpt-tip">
+            <h4>💡 ChatGPT Learning Tips</h4>
+            <p>Use these prompts to enhance your learning:</p>
+            <ol>
+                <li>"Show me how to write a function that calculates the Present Value (PV) with detailed explanation"</li>
+                <li>"What are the best practices for organizing financial functions in Python?"</li>
+                <li>"Help me understand how to handle errors in financial calculation functions"</li>
+                <li>"Explain how to write a function that calculates portfolio statistics with multiple return values"</li>
+            </ol>
         </div>
     </div>
     
@@ -73,12 +160,12 @@
         |
         <a href="week5.html">Next Week →</a>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!-- Add the Back to Home button at the bottom as well -->
+
     <div class="back-to-home">
         <a href="index.html">← Back to Home</a>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>
