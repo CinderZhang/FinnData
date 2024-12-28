@@ -7,82 +7,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 3: Control Flow: Conditional Statements and Loops</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .key-concept {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .exercise {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .resource-link {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .research-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .chatgpt-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+   
     <div class="container">
-        <h2>Week 3: Control Flow: Conditional Statements and Loops</h2>
+        <div class="key-concept">
+            <h2>Week 3: Control Flow: Conditional Statements and Loops</h2>
+            <p class="lead">Learn how to make decisions and repeat tasks in Python, essential for financial analysis and automated trading strategies.</p>
+        </div>
 
         <h3>Learning Objectives:</h3>
         <ul>
-            <li>Understand the concept of control flow in programming.</li>
-            <li>Learn how to use conditional statements (if, else, elif) in Python.</li>
-            <li>Learn how to use loops (for, while) in Python.</li>
-            <li>Use Flowchart to guide your coding projects</li>
+            <li>✓ Understand the concept of control flow in programming</li>
+            <li>✓ Learn how to use conditional statements (if, else, elif) in Python</li>
+            <li>✓ Learn how to use loops (for, while) in Python</li>
+            <li>✓ Use Flowcharts to guide your coding projects</li>
         </ul>
 
-        <h3>Materials:</h3>
-
-        <h4>1. Conditional Statements in Python</h4>
-        <p>Understanding if, else, and elif statements in Python for decision making.</p>
-        <a href="https://www.w3schools.com/python/python_conditions.asp" target="_blank">Read more about Conditional Statements in Python</a>
-
-        <h4>2. Loops in Python</h4>
-        <p>Understanding for and while loops in Python for repeated execution of code.</p>
-        <a href="https://www.w3schools.com/python/python_for_loops.asp" target="_blank">Read more about For Loops in Python</a> <br>
-        <a href="https://www.w3schools.com/python/python_while_loops.asp" target="_blank">Read more about While Loops in Python</a>
-        
-        <h4>3. Flowchart </h4>
-        <p>Understanding Flowchart.</p>
-        <a href="https://en.wikipedia.org/wiki/Flowchart" target="_blank">Flowchart basics-Wiki </a> <br>
-        <a href="https://betterprogramming.pub/animated-interactive-flowchart-diagrams-for-documenting-case-scenarios-a7bdbb5400bb" target="_blank">Generate Animated Flowchart</a>
-        
-        
-        <h3>Exercises:</h3>
-        <ol>
-            <li>Write a Python program that asks the user for a number and tells them whether the number is even or odd.</li>
-            <li>Write a Python program that prints all the numbers from 1 to 100 that are divisible by 3.</li>
-            <li>Write a Python program that takes a number as input and calculates its factorial.</li>
-            <li>Write a Python program that prints the Fibonacci series up to n numbers.</li>
-            <li>Create a simple text-based game that asks the user to guess a number. Provide feedback on whether the guess is too high or too low.</li>
-            <li>Write a Python program that takes a string and counts the number of vowels and consonants.</li>
-            <li>Write a Python program that prints the multiplication table of a given number.</li>
-        </ol>
-    </div>
-
-    <div class="container">
-        <h3>Important Reminder:</h3>
-        <div class="alert alert-warning">
-            <h4>Weekly Tasks:</h4>
-            <div id="ChatGPT Lead deep dive">
-                <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-                <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
-            </div>
-            
-            <div id="ChatGPT Assignment">
-                <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-                <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
+        <div class="resource-link">
+            <h4>1. Conditional Statements in Python</h4>
+            <p>Understanding if, else, and elif statements for decision making in financial scenarios.</p>
+            <a href="https://www.w3schools.com/python/python_conditions.asp" target="_blank">Read more about Conditional Statements in Python</a>
+            <div class="research-tip">
+                <p>📚 <strong>Can't access the link?</strong> Use <a href="https://www.perplexity.ai/" target="_blank">Perplexity.ai</a> and search for "Python if else elif tutorial examples"</p>
             </div>
         </div>
+
+        <div class="resource-link">
+            <h4>2. Loops in Python</h4>
+            <p>Understanding for and while loops for processing financial data.</p>
+            <a href="https://www.w3schools.com/python/python_for_loops.asp" target="_blank">Read more about For Loops in Python</a><br>
+            <a href="https://www.w3schools.com/python/python_while_loops.asp" target="_blank">Read more about While Loops in Python</a>
+        </div>
+
+        <div class="resource-link">
+            <h4>3. Flowcharts</h4>
+            <p>Understanding Flowcharts for planning your financial algorithms.</p>
+            <a href="https://en.wikipedia.org/wiki/Flowchart" target="_blank">Flowchart basics-Wiki</a>
+        </div>
+
+        <h3>Exercises:</h3>
+        <div class="exercise">
+            <ol>
+                <li>Write a program that:
+                    <ul>
+                        <li>Takes a stock price as input</li>
+                        <li>If price > 100, print "High-priced stock"</li>
+                        <li>If 50 ≤ price ≤ 100, print "Medium-priced stock"</li>
+                        <li>If price < 50, print "Low-priced stock"</li>
+                    </ul>
+                </li>
+                <li>Create a program that calculates compound interest over multiple years using a loop</li>
+                <li>Write a program that analyzes a list of stock prices and:
+                    <ul>
+                        <li>Finds the highest and lowest prices</li>
+                        <li>Calculates the average price</li>
+                        <li>Counts how many days the price was above average</li>
+                    </ul>
+                </li>
+                <li>Create a simple trading simulator that:
+                    <ul>
+                        <li>Loops through daily prices</li>
+                        <li>Uses if statements to make buy/sell decisions</li>
+                        <li>Tracks portfolio value</li>
+                    </ul>
+                </li>
+                <li>Write a program that calculates the total return of an investment with monthly contributions over a period of years</li>
+                <li>Create a loan payment calculator that shows the remaining balance after each payment using a loop</li>
+            </ol>
+        </div>
+
+        <div class="chatgpt-tip">
+            <h4>💡 ChatGPT Learning Tips</h4>
+            <p>Use these prompts to enhance your learning:</p>
+            <ol>
+                <li>"Show me how to use if-else statements to create a basic stock trading decision system"</li>
+                <li>"Explain how to use a for loop to calculate compound interest over multiple years"</li>
+                <li>"Help me create a flowchart for a simple trading strategy using Python"</li>
+                <li>"What are common patterns in financial calculations that use loops?"</li>
+            </ol>
+        </div>
     </div>
-    
     
     <div style="text-align: center; margin-top: 20px;">
         <a href="week2.html">← Previous Week</a>
         |
         <a href="week4.html">Next Week →</a>
     </div>
-        <!-- Add the Back to Home button at the bottom as well -->
-        <div class="back-to-home">
-            <a href="index.html">← Back to Home</a>
-        </div>
+
+    <div class="back-to-home">
+        <a href="index.html">← Back to Home</a>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

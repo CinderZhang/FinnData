@@ -5,54 +5,246 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 12: LLM and Prompt Engineering</title>
+    <title>Week 12: Course Review and Final Projects</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .key-concept {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .exercise {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .resource-link {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .research-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .chatgpt-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .code-example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+   
     <div class="container">
-        <h2>Week 12: LLM and Prompt Engineering</h2>
+        <div class="key-concept">
+            <h2>Week 12: Course Review and Final Projects</h2>
+            <p class="lead">Review key concepts, present final projects, and prepare for real-world financial analysis applications.</p>
+        </div>
 
-        <h3>Learning Objectives:</h3>
-        <ul>
-            <li>Understand prompt engineering in natural language processing.</li>
-        </ul>
+        <h3>Course Review:</h3>
+        <div class="resource-link">
+            <h4>1. Python Fundamentals (Weeks 1-4)</h4>
+            <ul>
+                <li>Basic Python syntax and data types</li>
+                <li>Control structures and functions</li>
+                <li>File handling and data structures</li>
+                <li>Object-oriented programming basics</li>
+            </ul>
+        </div>
 
-        <h3>Materials:</h3>
+        <div class="resource-link">
+            <h4>2. Data Analysis Tools (Weeks 5-7)</h4>
+            <ul>
+                <li>Lists and arrays with NumPy</li>
+                <li>Data manipulation with pandas</li>
+                <li>Data visualization with matplotlib</li>
+                <li>Financial data analysis techniques</li>
+            </ul>
+        </div>
 
-        <!-- Previous sections -->
+        <div class="resource-link">
+            <h4>3. Financial Applications (Weeks 8-11)</h4>
+            <ul>
+                <li>Algorithmic trading basics</li>
+                <li>Portfolio analysis</li>
+                <li>Risk management</li>
+                <li>Web-based dashboards</li>
+            </ul>
+        </div>
 
-        <h4>5. Introduction to Prompt Engineering in NLP</h4>
-        <p>Learn about prompt engineering, a technique used in natural language processing to guide the responses of language models.</p>
-        
-        <a href="prompteng.html" target="_blank">Prompt Engineering Tutorials</a>
+        <h3>Final Project Guidelines:</h3>
+        <div class="exercise">
+            <h4>Project Requirements:</h4>
+            <ol>
+                <li>Technical Components:
+                    <ul>
+                        <li>Data acquisition and cleaning</li>
+                        <li>Financial analysis implementation</li>
+                        <li>Visualization and reporting</li>
+                        <li>Graphical User interface</li>
+                    </ul>
+                </li>
+                <li>Documentation:
+                    <ul>
+                        <li>Clear project description</li>
+                        <li>Installation instructions</li>
+                        <li>Usage examples</li>
+                        <li>Code comments</li>
+                    </ul>
+                </li>
+                <li>Presentation:
+                    <ul>
+                        <li>Project overview (5 minutes)</li>
+                        <li>Technical demonstration (5 minutes)</li>
+                        <li>Lessons learned (3 minutes)</li>
+                        <li>Q&A (2 minutes)</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
 
-        <h3>Exercises:</h3>
-        <ol>
-            <!-- Previous exercises -->
-            <li>Learn prompt engineering from a source of your choice and report back.</li>
-        </ol>
-    </div>
-    <div class="container">
-        <h3>Important Reminder:</h3>
-        <div class="alert alert-warning">
-            <h4>Weekly Tasks:</h4>
-            <div id="ChatGPT Lead deep dive">
-                <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-                <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
+        <div class="resource-link">
+            <h4>Sample Project Structure</h4>
+            <div class="code-example">
+                <pre>
+final_project/
+│
+├── data/                  # Data files
+│   ├── raw/              # Raw data
+│   └── processed/        # Cleaned data
+│
+├── src/                  # Source code
+│   ├── __init__.py
+│   ├── data_loader.py   # Data loading functions
+│   ├── analysis.py      # Analysis functions
+│   └── visualization.py # Plotting functions
+│
+├── notebooks/           # Jupyter notebooks
+│   └── analysis.ipynb  # Analysis and results
+│
+├── tests/              # Unit tests
+│   └── test_analysis.py
+│
+├── requirements.txt    # Dependencies
+├── README.md          # Project documentation
+└── main.py           # Main application</pre>
             </div>
-            
-            <div id="ChatGPT Assignment">
-                <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-                <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
+        </div>
+
+        <div class="resource-link">
+            <h4>Example README Template</h4>
+            <div class="code-example">
+                <pre>
+# Financial Analysis Project
+
+## Overview
+Brief description of your project and its goals.
+
+## Features
+- Feature 1: Description
+- Feature 2: Description
+- Feature 3: Description
+
+## Installation
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+```python
+python main.py
+```
+
+## Data Sources
+- Source 1: Description
+- Source 2: Description
+
+## Analysis Methods
+Description of analysis techniques used.
+
+## Results
+Summary of key findings.
+
+## Future Improvements
+Potential enhancements and features.</pre>
             </div>
+        </div>
+
+        <h3>Project Ideas:</h3>
+        <div class="exercise">
+            <ol>
+                <li>Stock Analysis Tool:
+                    <ul>
+                        <li>Technical analysis dashboard</li>
+                        <li>Performance metrics</li>
+                        <li>Trading signals</li>
+                        <li>Interactive charts</li>
+                    </ul>
+                </li>
+                <li>Portfolio Management System:
+                    <ul>
+                        <li>Portfolio tracking</li>
+                        <li>Risk analysis</li>
+                        <li>Performance reporting</li>
+                        <li>Asset allocation</li>
+                    </ul>
+                </li>
+                <li>Market Analysis Dashboard:
+                    <ul>
+                        <li>Market indicators</li>
+                        <li>Sector analysis</li>
+                        <li>Correlation studies</li>
+                        <li>Trend analysis</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="chatgpt-tip">
+            <h4>💡 Final Project Tips</h4>
+            <ol>
+                <li>Start with a clear, focused goal</li>
+                <li>Use concepts from multiple weeks</li>
+                <li>Include proper error handling</li>
+                <li>Create clear documentation</li>
+                <li>Test thoroughly</li>
+                <li>Practice your presentation</li>
+            </ol>
+        </div>
+
+        <div class="resource-link">
+            <h4>Additional Resources</h4>
+            <ul>
+                <li><a href="https://github.com/topics/finance-python" target="_blank">Python Finance Projects on GitHub</a></li>
+                <li><a href="https://www.investopedia.com/python-for-finance-5072852" target="_blank">Python for Finance Guide</a></li>
+                <li><a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/09_timeseries.html" target="_blank">Time Series Analysis with Pandas</a></li>
+            </ul>
         </div>
     </div>
     
@@ -61,10 +253,10 @@
         |
         <a href="week13.html">Next Week →</a>
     </div>
-        <!-- Add the Back to Home button at the bottom as well -->
-        <div class="back-to-home">
-            <a href="index.html">← Back to Home</a>
-        </div>
+
+    <div class="back-to-home">
+        <a href="index.html">← Back to Home</a>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

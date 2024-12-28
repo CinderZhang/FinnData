@@ -5,56 +5,248 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 11: Advanced Financial Data Analysis Techniques-algorithm trading</title>
+    <title>Week 11: Web-Based Financial Applications with Streamlit</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .key-concept {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .exercise {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .resource-link {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .research-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .chatgpt-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .code-example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+   
     <div class="container">
-        <h2>Week 11: Advanced Financial Data Analysis Techniques-algorithm trading</h2>
+        <div class="key-concept">
+            <h2>Week 11: Web-Based Financial Applications with Streamlit</h2>
+            <p class="lead">Learn how to create interactive web-based financial applications using Streamlit. Transform your Python scripts into beautiful, interactive dashboards.</p>
+        </div>
 
         <h3>Learning Objectives:</h3>
         <ul>
-
-            <li>Explore algorithmic trading strategies.</li>
+            <li>✓ Understand Streamlit basics</li>
+            <li>✓ Create interactive financial dashboards</li>
+            <li>✓ Add user inputs and controls</li>
+            <li>✓ Deploy your application</li>
         </ul>
 
-        <h3>Materials:</h3>
+        <div class="resource-link">
+            <h4>1. Basic Streamlit App</h4>
+            <p>Creating your first Streamlit application (app.py).</p>
+            <div class="code-example">
+                <pre>
+import streamlit as st
+import yfinance as yf
+import pandas as pd
+import plotly.graph_objects as go
 
-  
-        <h4>1. Algorithmic Trading Strategies</h4>
-        <p>Explore various algorithmic trading strategies and learn how to implement them in Python.</p>
-        <a href="https://www.investopedia.com/articles/active-trading/101014/basics-algorithmic-trading-concepts-and-examples.asp" target="_blank">Basics of Algorithmic Trading</a>
-        <br>
-        <a href="https://github.com/CinderZhang/FinnData/blob/main/code/BacktestingPY_example_SMA.ipynb" target="_blank">Code Sample: SMA Strategy</a>
-        <br>
-        <a href="https://youtu.be/GDMkkmkJigw?si=vVXguXq6wsgONTpl" target="_blank">Optional Video: From very basic to advanced--3 hours long: Algorithmic Trading with Python</a>
+def main():
+    st.title('Stock Analysis Dashboard')
+    
+    # Sidebar inputs
+    symbol = st.sidebar.text_input('Enter Stock Symbol:', 'AAPL')
+    start_date = st.sidebar.date_input('Start Date')
+    end_date = st.sidebar.date_input('End Date')
+    
+    # Load data
+    data = yf.download(symbol, start=start_date, end=end_date)
+    
+    # Display stock price chart
+    fig = go.Figure()
+    fig.add_trace(go.Candlestick(
+        x=data.index,
+        open=data['Open'],
+        high=data['High'],
+        low=data['Low'],
+        close=data['Close'],
+        name='OHLC'
+    ))
+    st.plotly_chart(fig)
+    
+    # Display metrics
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric('Latest Price', f"${data['Close'][-1]:.2f}")
+    with col2:
+        returns = ((data['Close'][-1] / data['Close'][0]) - 1) * 100
+        st.metric('Total Return', f"{returns:.1f}%")
+    with col3:
+        vol = data['Close'].pct_change().std() * (252 ** 0.5) * 100
+        st.metric('Annualized Volatility', f"{vol:.1f}%")
 
-        <h3>Exercises:</h3>
-        <ol>
-            <li>Develop a simple moving average crossover trading strategy and backtest it with historical data.</li>
-        </ol>
-    </div>
-    <div class="container">
-        <h3>Important Reminder:</h3>
-        <div class="alert alert-warning">
-            <h4>Weekly Tasks:</h4>
-            <div id="ChatGPT Lead deep dive">
-                <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-                <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
+if __name__ == '__main__':
+    main()</pre>
             </div>
-            
-            <div id="ChatGPT Assignment">
-                <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-                <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
+            <p>Run with: <code>streamlit run app.py</code></p>
+        </div>
+
+        <div class="resource-link">
+            <h4>2. Interactive Features</h4>
+            <p>Adding interactive features to your dashboard.</p>
+            <div class="code-example">
+                <pre>
+# Add technical indicators
+if st.sidebar.checkbox('Show Technical Indicators'):
+    ma1 = st.sidebar.number_input('MA1 Period', value=20)
+    ma2 = st.sidebar.number_input('MA2 Period', value=50)
+    
+    data[f'MA{ma1}'] = data['Close'].rolling(ma1).mean()
+    data[f'MA{ma2}'] = data['Close'].rolling(ma2).mean()
+    
+    fig.add_trace(go.Scatter(
+        x=data.index,
+        y=data[f'MA{ma1}'],
+        name=f'{ma1}-day MA',
+        line=dict(color='orange')
+    ))
+    fig.add_trace(go.Scatter(
+        x=data.index,
+        y=data[f'MA{ma2}'],
+        name=f'{ma2}-day MA',
+        line=dict(color='blue')
+    ))
+
+# Add volume chart
+if st.sidebar.checkbox('Show Volume'):
+    fig2 = go.Figure()
+    fig2.add_trace(go.Bar(
+        x=data.index,
+        y=data['Volume'],
+        name='Volume'
+    ))
+    st.plotly_chart(fig2)</pre>
             </div>
+        </div>
+
+        <div class="resource-link">
+            <h4>3. Portfolio Analysis Page</h4>
+            <p>Adding a portfolio analysis page.</p>
+            <div class="code-example">
+                <pre>
+def portfolio_page():
+    st.header('Portfolio Analysis')
+    
+    # Portfolio inputs
+    symbols = st.text_input('Enter stock symbols (comma-separated):', 'AAPL,MSFT,GOOGL')
+    symbols = [s.strip() for s in symbols.split(',')]
+    
+    # Download data
+    portfolio = pd.DataFrame()
+    for symbol in symbols:
+        data = yf.download(symbol, period='1y')['Adj Close']
+        portfolio[symbol] = data
+    
+    # Calculate returns
+    returns = portfolio.pct_change()
+    
+    # Display correlation matrix
+    st.subheader('Correlation Matrix')
+    st.dataframe(returns.corr())
+    
+    # Calculate and display portfolio metrics
+    weights = np.array([1/len(symbols)] * len(symbols))
+    portfolio_return = np.sum(returns.mean() * weights) * 252
+    portfolio_vol = np.sqrt(np.dot(weights.T, np.dot(returns.cov() * 252, weights)))
+    
+    st.metric('Expected Annual Return', f"{portfolio_return:.1%}")
+    st.metric('Annual Volatility', f"{portfolio_vol:.1%}")
+    st.metric('Sharpe Ratio', f"{portfolio_return/portfolio_vol:.2f}")</pre>
+            </div>
+        </div>
+
+        <h3>Projects:</h3>
+        <div class="exercise">
+            <ol>
+                <li>Create a Stock Analysis Dashboard:
+                    <ul>
+                        <li>Price chart with technical indicators</li>
+                        <li>Performance metrics</li>
+                        <li>Volume analysis</li>
+                        <li>Basic stock information</li>
+                    </ul>
+                </li>
+                <li>Build a Portfolio Tracker:
+                    <ul>
+                        <li>Multiple stock tracking</li>
+                        <li>Portfolio metrics</li>
+                        <li>Asset allocation chart</li>
+                        <li>Performance comparison</li>
+                    </ul>
+                </li>
+                <li>Implement Market Analysis:
+                    <ul>
+                        <li>Market index tracking</li>
+                        <li>Sector performance</li>
+                        <li>Market breadth indicators</li>
+                        <li>News headlines</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="chatgpt-tip">
+            <h4>💡 ChatGPT Learning Tips</h4>
+            <p>Use these prompts to enhance your learning:</p>
+            <ol>
+                <li>"Help me understand Streamlit's basic components"</li>
+                <li>"Show me how to create interactive charts with Plotly"</li>
+                <li>"Explain how to organize a Streamlit dashboard"</li>
+                <li>"What are best practices for financial dashboard design?"</li>
+            </ol>
+        </div>
+
+        <div class="resource-link">
+            <h4>Additional Resources</h4>
+            <ul>
+                <li><a href="https://streamlit.io/docs" target="_blank">Streamlit Documentation</a></li>
+                <li><a href="https://plotly.com/python/" target="_blank">Plotly Python Documentation</a></li>
+                <li><a href="https://github.com/streamlit/demo-finance" target="_blank">Streamlit Finance Demo</a></li>
+            </ul>
         </div>
     </div>
     
@@ -63,10 +255,10 @@
         |
         <a href="week12.html">Next Week →</a>
     </div>
-        <!-- Add the Back to Home button at the bottom as well -->
-        <div class="back-to-home">
-            <a href="index.html">← Back to Home</a>
-        </div>
+
+    <div class="back-to-home">
+        <a href="index.html">← Back to Home</a>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

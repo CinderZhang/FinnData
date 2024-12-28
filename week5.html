@@ -5,74 +5,216 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 5: Lists and Tuples in Python</title>
+    <title>Week 5: Lists and Arrays in Python</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .key-concept {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .exercise {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .resource-link {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .research-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .chatgpt-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .code-example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+   
     <div class="container">
-        <h2>Week 5: Lists and Tuples in Python</h2>
+        <div class="key-concept">
+            <h2>Week 5: Lists and Arrays in Python</h2>
+            <p class="lead">Learn how to work with lists and arrays to handle financial time series data, stock prices, and portfolio holdings.</p>
+        </div>
 
         <h3>Learning Objectives:</h3>
         <ul>
-            <li>Understand the concept of lists and tuples in Python.</li>
-            <li>Learn how to create, access, and manipulate lists and tuples.</li>
-            <li>Understand the difference between lists and tuples.</li>
+            <li>✓ Understand lists and arrays in Python</li>
+            <li>✓ Learn list operations and methods</li>
+            <li>✓ Introduction to NumPy arrays for financial data</li>
+            <li>✓ Work with time series data</li>
         </ul>
 
-        <h3>Materials:</h3>
+        <div class="resource-link">
+            <h4>1. Python Lists</h4>
+            <p>Understanding basic list operations for storing financial data.</p>
+            <div class="code-example">
+                <pre>
+# Creating a list of stock prices
+prices = [105.25, 106.00, 104.50, 107.25, 108.00]
+                
+# Calculating daily returns
+daily_returns = [(prices[i] - prices[i-1])/prices[i-1] * 100 
+                 for i in range(1, len(prices))]</pre>
+            </div>
+            <a href="https://www.w3schools.com/python/python_lists.asp" target="_blank">Read more about Lists in Python</a>
+            <div class="research-tip">
+                <p>📚 <strong>Can't access the link?</strong> Use <a href="https://www.perplexity.ai/" target="_blank">Perplexity.ai</a> and search for "Python lists tutorial with examples"</p>
+            </div>
+        </div>
 
-        <h4>1. Lists in Python</h4>
-        <p>Learn how to create and manipulate lists in Python.</p>
-        <a href="https://www.w3schools.com/python/python_lists.asp" target="_blank">Read more about Lists in Python</a>
+        <div class="resource-link">
+            <h4>2. NumPy Arrays</h4>
+            <p>Using NumPy arrays for efficient financial calculations.</p>
+            <div class="code-example">
+                <pre>
+import numpy as np
 
-        <h4>2. Tuples in Python</h4>
-        <p>Learn how to create and manipulate tuples in Python.</p>
-        <a href="https://www.w3schools.com/python/python_tuples.asp" target="_blank">Read more about Tuples in Python</a>
+# Converting stock prices to numpy array
+prices_array = np.array([105.25, 106.00, 104.50, 107.25, 108.00])
 
-        <h4>3. Dictionary in Python</h4>
-        <p>Learn how to create and manipulate dictionaries in Python.</p>
-        <a href="https://www.w3schools.com/python/python_dictionaries.asp" target="_blank">Read more about Dictionary in Python</a>
+# Calculating returns using numpy
+returns = np.diff(prices_array) / prices_array[:-1] * 100
 
-        <h4>4. Json and SEC-API</h4>
-        <p>Learn how to work with Financial API and JSON in Python.</p>
-        <ol>
-            <li><a href="https://sec-api.io" target="_blank">SEC-API</a></li>           
-            <li><a href="https://medium.com/@jan_5421/insider-trading-analyzed-with-python-d57b6352a914" target="_blank">Replicate the Insider Trading Project</a>  </li>
-        </ol>
+# Calculate volatility (standard deviation of returns)
+volatility = np.std(returns)</pre>
+            </div>
+            <a href="https://numpy.org/doc/stable/user/quickstart.html" target="_blank">Read more about NumPy Arrays</a>
+        </div>
+
+        <div class="resource-link">
+            <h4>3. Lists and Arrays for Financial Data</h4>
+            <p>Understanding how to structure financial data using lists and arrays.</p>
+            <div class="code-example">
+                <pre>
+# Stock portfolio using lists
+symbols = ['AAPL', 'MSFT', 'GOOGL']
+quantities = [100, 50, 75]
+prices = [190.50, 375.00, 140.50]
+
+# Calculate portfolio value
+portfolio_value = sum([q * p for q, p in zip(quantities, prices)])
+
+# Historical prices as numpy array
+import numpy as np
+historical_prices = np.array([
+    [100.0, 200.0, 150.0],  # Day 1 prices
+    [101.0, 202.0, 151.0],  # Day 2 prices
+    [99.0, 198.0, 149.0]    # Day 3 prices
+])
+
+# Calculate daily returns for all stocks
+daily_returns = np.diff(historical_prices, axis=0) / historical_prices[:-1] * 100</pre>
+            </div>
+            <a href="https://www.w3schools.com/python/python_lists_comprehension.asp" target="_blank">Read more about List Comprehensions</a>
+            <div class="research-tip">
+                <p>📚 <strong>Can't access the link?</strong> Use <a href="https://www.perplexity.ai/" target="_blank">Perplexity.ai</a> and search for "Python list comprehension examples"</p>
+            </div>
+        </div>
+
+        <div class="resource-link">
+            <h4>4. Time Series Data</h4>
+            <p>Working with financial time series using lists and arrays.</p>
+            <div class="code-example">
+                <pre>
+from datetime import datetime, timedelta
+
+# Creating date range for stock data
+dates = [(datetime.now() - timedelta(days=x)).strftime('%Y-%m-%d') 
+         for x in range(5)]
+         
+# Combining dates with prices
+stock_data = list(zip(dates, prices))</pre>
+            </div>
+        </div>
+
         <h3>Exercises:</h3>
-        <ol>
-            <li>Write a Python program to find the largest number in a list.</li>
-            <li>Write a Python program to count the number of strings in a list where the string length is 2 or more.</li>
-            <li>Write a Python program to remove duplicates from a list.</li>
-            <li>Create a Python program that takes a tuple of numbers and computes the sum of all the numbers in the tuple.</li>
-            <li>Write a Python program to convert a list of tuples into a dictionary.</li>
-            <li>Create a Python program that takes two lists and returns a list that contains only the elements that are common between the two lists (without duplicates).</li>
-            <li>Write a Python program to find the second smallest number in a list.</li>
-            <li>Write a Python program that takes a list of numbers and returns a new list with unique elements of the first list.</li>
-        </ol>
-    </div>
+        <div class="exercise">
+            <ol>
+                <li>Create a basic portfolio tracker:
+                    <ul>
+                        <li>Store stock symbols and quantities in lists</li>
+                        <li>Create a list of prices and calculate total value</li>
+                        <li>Use list comprehension to calculate position values</li>
+                    </ul>
+                </li>
+                <li>Implement a simple moving average calculator:
+                    <ul>
+                        <li>Create a list of historical prices</li>
+                        <li>Calculate 5-day and 20-day moving averages</li>
+                        <li>Generate signals when short MA crosses long MA</li>
+                    </ul>
+                </li>
+                <li>Create a bond calculator:
+                    <ul>
+                        <li>Store bond details (face value, coupon, maturity) in nested lists</li>
+                        <li>Calculate yield to maturity</li>
+                        <li>Compare multiple bonds using list operations</li>
+                    </ul>
+                </li>
+                <li>Build a price analyzer:
+                    <ul>
+                        <li>Create a NumPy array of daily prices</li>
+                        <li>Calculate daily, weekly, and monthly returns</li>
+                        <li>Find highest/lowest prices and their positions</li>
+                    </ul>
+                </li>
+                <li>Implement a simple asset allocation tool:
+                    <ul>
+                        <li>Store current and target allocations in arrays</li>
+                        <li>Calculate allocation differences</li>
+                        <li>Determine rebalancing needs</li>
+                    </ul>
+                </li>
+                <li>Create a basic risk calculator:
+                    <ul>
+                        <li>Store historical returns in NumPy arrays</li>
+                        <li>Calculate correlation between assets</li>
+                        <li>Compute portfolio volatility</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
 
-    <div class="container">
-        <h3>Important Reminder:</h3>
-        <div class="alert alert-warning">
-            <h4>Weekly Tasks:</h4>
-            <div id="ChatGPT Lead deep dive">
-                <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-                <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
-            </div>
-            
-            <div id="ChatGPT Assignment">
-                <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-                <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
-            </div>
+        <div class="chatgpt-tip">
+            <h4>💡 ChatGPT Learning Tips</h4>
+            <p>Use these prompts to enhance your learning:</p>
+            <ol>
+                <li>"Show me how to use list comprehension for financial calculations"</li>
+                <li>"Explain the difference between lists and NumPy arrays for financial data"</li>
+                <li>"Help me understand how to structure portfolio data using lists"</li>
+                <li>"What are efficient ways to calculate returns using NumPy arrays?"</li>
+            </ol>
         </div>
     </div>
     
@@ -81,10 +223,10 @@
         |
         <a href="week6.html">Next Week →</a>
     </div>
-        <!-- Add the Back to Home button at the bottom as well -->
-        <div class="back-to-home">
-            <a href="index.html">← Back to Home</a>
-        </div>
+
+    <div class="back-to-home">
+        <a href="index.html">← Back to Home</a>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

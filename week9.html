@@ -5,53 +5,229 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 9: Advanced Financial Data Analysis Techniques-Time Series</title>
+    <title>Week 9: Financial Analysis Projects</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .key-concept {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .exercise {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .resource-link {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .research-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .chatgpt-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .code-example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+   
     <div class="container">
-        <h2>Week 9: Advanced Financial Data Analysis Techniques-Time Series</h2>
+        <div class="key-concept">
+            <h2>Week 9: Financial Analysis Projects</h2>
+            <p class="lead">Apply your Python skills to real-world financial analysis projects. Learn to combine data manipulation, visualization, and basic trading strategies into complete applications.</p>
+        </div>
 
         <h3>Learning Objectives:</h3>
         <ul>
-            <li>Understand time series analysis and its applications in finance.</li>
-
+            <li>✓ Build complete financial analysis tools</li>
+            <li>✓ Combine multiple Python libraries effectively</li>
+            <li>✓ Create interactive financial reports</li>
+            <li>✓ Practice data visualization for finance</li>
         </ul>
 
-        <h3>Materials:</h3>
+        <div class="resource-link">
+            <h4>1. Stock Analysis Dashboard</h4>
+            <p>Creating a comprehensive stock analysis tool.</p>
+            <div class="code-example">
+                <pre>
+import yfinance as yf
+import pandas as pd
+import matplotlib.pyplot as plt
 
-        <h4>1. Time Series Analysis</h4>
-        <p>Learn the basics of time series analysis and how it can be applied to financial data.</p>
-        <a href="https://www.investopedia.com/terms/t/timeseries.asp" target="_blank">Introduction to Time Series Analysis</a>
-        <br>
-        <a href="https://www.machinelearningplus.com/time-series/time-series-analysis-python/" target="_blank">Time Series Analysis in Python</a>
+def create_stock_dashboard(symbol, start_date, end_date):
+    # Download data
+    stock = yf.download(symbol, start=start_date, end=end_date)
+    
+    # Calculate metrics
+    stock['Daily_Return'] = stock['Adj Close'].pct_change()
+    stock['MA50'] = stock['Adj Close'].rolling(window=50).mean()
+    stock['MA200'] = stock['Adj Close'].rolling(window=200).mean()
+    
+    # Create subplots
+    fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(12, 10))
+    
+    # Price and MA plot
+    ax1.plot(stock.index, stock['Adj Close'], label='Price')
+    ax1.plot(stock.index, stock['MA50'], label='50-day MA')
+    ax1.plot(stock.index, stock['MA200'], label='200-day MA')
+    ax1.set_title(f'{symbol} Stock Price and Moving Averages')
+    ax1.legend()
+    
+    # Volume plot
+    ax2.bar(stock.index, stock['Volume'])
+    ax2.set_title('Trading Volume')
+    
+    # Returns distribution
+    ax3.hist(stock['Daily_Return'].dropna(), bins=50)
+    ax3.set_title('Daily Returns Distribution')
+    
+    plt.tight_layout()
+    plt.show()
+    
+    # Calculate summary statistics
+    summary = {
+        'Average Daily Return': stock['Daily_Return'].mean(),
+        'Return Volatility': stock['Daily_Return'].std(),
+        'Total Return': (stock['Adj Close'][-1] / stock['Adj Close'][0]) - 1,
+        'Max Drawdown': (stock['Adj Close'] / stock['Adj Close'].expanding().max() - 1).min()
+    }
+    
+    return pd.Series(summary)</pre>
+            </div>
+            <a href="https://pandas.pydata.org/docs/user_guide/visualization.html" target="_blank">Read more about Pandas Visualization</a>
+        </div>
 
-        <h3>Exercises:</h3>
-        <ol>
-            <li>Perform time series analysis on a dataset of stock prices using Python.</li>
-        </ol>
-    </div>
-    <div class="container">
-        <h3>Important Reminder:</h3>
-        <div class="alert alert-warning">
-            <h4>Weekly Tasks:</h4>
-            <div id="ChatGPT Lead deep dive">
-                <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-                <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
+        <div class="resource-link">
+            <h4>2. Portfolio Analysis Tool</h4>
+            <p>Building a tool to analyze portfolio performance.</p>
+            <div class="code-example">
+                <pre>
+def analyze_portfolio(symbols, weights, start_date, end_date):
+    # Download data for all symbols
+    portfolio = pd.DataFrame()
+    for symbol in symbols:
+        data = yf.download(symbol, start=start_date, end=end_date)['Adj Close']
+        portfolio[symbol] = data
+    
+    # Calculate portfolio value
+    normalized = portfolio / portfolio.iloc[0]
+    weighted_returns = normalized * weights
+    portfolio_value = weighted_returns.sum(axis=1)
+    
+    # Calculate metrics
+    daily_returns = portfolio_value.pct_change()
+    
+    metrics = {
+        'Total Return': (portfolio_value[-1] / portfolio_value[0]) - 1,
+        'Annual Return': ((portfolio_value[-1] / portfolio_value[0]) ** (252/len(portfolio_value)) - 1),
+        'Volatility': daily_returns.std() * (252 ** 0.5),
+        'Sharpe Ratio': (daily_returns.mean() / daily_returns.std()) * (252 ** 0.5)
+    }
+    
+    return pd.Series(metrics), portfolio_value</pre>
             </div>
-            
-            <div id="ChatGPT Assignment">
-                <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-                <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
+        </div>
+
+        <div class="resource-link">
+            <h4>3. Market Analysis Report</h4>
+            <p>Creating automated market analysis reports.</p>
+            <div class="code-example">
+                <pre>
+def generate_market_report(index_symbol='SPY', top_stocks=['AAPL', 'MSFT', 'GOOGL']):
+    # Download market data
+    market = yf.download(index_symbol, period='1y')
+    
+    # Calculate market metrics
+    market_return = (market['Adj Close'][-1] / market['Adj Close'][0]) - 1
+    market_vol = market['Adj Close'].pct_change().std() * (252 ** 0.5)
+    
+    # Analyze top stocks
+    stock_metrics = {}
+    for stock in top_stocks:
+        data = yf.download(stock, period='1y')
+        stock_return = (data['Adj Close'][-1] / data['Adj Close'][0]) - 1
+        stock_metrics[stock] = {
+            'Return': stock_return,
+            'Relative Performance': stock_return - market_return
+        }
+    
+    return {
+        'Market Performance': market_return,
+        'Market Volatility': market_vol,
+        'Stock Analysis': pd.DataFrame(stock_metrics).T
+    }</pre>
             </div>
+        </div>
+
+        <h3>Projects:</h3>
+        <div class="exercise">
+            <ol>
+                <li>Create a Stock Analysis Dashboard:
+                    <ul>
+                        <li>Implement the dashboard code provided above</li>
+                        <li>Add additional technical indicators</li>
+                        <li>Create summary statistics table</li>
+                        <li>Add interactive features for date selection</li>
+                    </ul>
+                </li>
+                <li>Build a Portfolio Tracker:
+                    <ul>
+                        <li>Track multiple stocks</li>
+                        <li>Calculate portfolio metrics</li>
+                        <li>Generate performance reports</li>
+                        <li>Create visualization of portfolio allocation</li>
+                    </ul>
+                </li>
+                <li>Develop a Market Analysis Tool:
+                    <ul>
+                        <li>Track major market indices</li>
+                        <li>Compare stock performance</li>
+                        <li>Generate automated reports</li>
+                        <li>Create summary visualizations</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="chatgpt-tip">
+            <h4>💡 ChatGPT Learning Tips</h4>
+            <p>Use these prompts to enhance your learning:</p>
+            <ol>
+                <li>"Help me understand how to combine multiple plots in matplotlib"</li>
+                <li>"Explain how to calculate portfolio performance metrics"</li>
+                <li>"Show me how to create an effective financial dashboard"</li>
+                <li>"What are the best practices for financial data visualization?"</li>
+            </ol>
         </div>
     </div>
     
@@ -61,10 +237,9 @@
         <a href="week10.html">Next Week →</a>
     </div>
 
-        <!-- Add the Back to Home button at the bottom as well -->
-        <div class="back-to-home">
-            <a href="index.html">← Back to Home</a>
-        </div>
+    <div class="back-to-home">
+        <a href="index.html">← Back to Home</a>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

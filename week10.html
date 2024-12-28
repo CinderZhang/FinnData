@@ -5,72 +5,267 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 10: Advanced Financial Data Analysis Techniques</title>
+    <title>Week 10: Building a Complete Financial Analysis Application</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .key-concept {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .exercise {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .resource-link {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .research-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .chatgpt-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .code-example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+   
     <div class="container">
-        <h2>Week 10: Advanced Financial Data Analysis Techniques-portfolio optimization</h2>
+        <div class="key-concept">
+            <h2>Week 10: Building a Complete Financial Analysis Application</h2>
+            <p class="lead">Combine everything you've learned to build a complete financial analysis application. This week focuses on project structure, code organization, and creating a user-friendly interface.</p>
+        </div>
 
         <h3>Learning Objectives:</h3>
         <ul>
-            <li>Learn about portfolio optimization techniques.</li>
-
+            <li>✓ Structure a complete Python application</li>
+            <li>✓ Organize code into modules</li>
+            <li>✓ Create a user-friendly interface</li>
+            <li>✓ Implement error handling</li>
         </ul>
 
-        <h3>Materials:</h3>
-
-        <h4>1. Portfolio Optimization</h4>
-        <p>Learn about portfolio optimization techniques such as Modern Portfolio Theory (MPT) and how to implement them in Python.</p>
-        <a href="https://youtu.be/MGOSTRwQpZQ?si=OsMOYImz08WvHS-Q" target="_blank">Optimization: background and foundations</a><br>
-        <a href="https://www.investopedia.com/managing-wealth/achieve-optimal-asset-allocation/" target="_blank">Portfolio Optimization</a><br>
-        <a href="https://towardsdatascience.com/efficient-frontier-portfolio-optimisation-in-python-e7844051e7f" target="_blank">Efficient Frontier & Portfolio Optimization in Python</a><br>
-
-
-        <a href="https://lectures.scientific-python.org/" target="_blank">Extended Reading: Scientific Python</a><br>
-
-        <h3>Exercises:</h3>
-        <ol>
-            <li><a href="https://youtu.be/MGOSTRwQpZQ?si=OsMOYImz08WvHS-Q" target="_blank">Watch and summarize the video. Continue your research with ChatGPT and report what you've learned in your video.</a></li>
-            <li>Implement a portfolio optimization algorithm to maximize the Sharpe ratio of a portfolio of stocks.</li>
-
-        </ol>
-    </div>
-
-    <div class="container">
-        <h3>Important Reminder:</h3>
-        <div class="alert alert-warning">
-            <h4>Weekly Tasks:</h4>
-            <div id="ChatGPT Lead deep dive">
-                <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-                <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
-            </div>
-            
-            <div id="ChatGPT Assignment">
-                <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-                <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
+        <div class="resource-link">
+            <h4>1. Project Structure</h4>
+            <p>Organizing your financial analysis application.</p>
+            <div class="code-example">
+                <pre>
+financial_analyzer/
+│
+├── data/                  # Data storage
+│   └── stock_data.csv
+│
+├── src/                   # Source code
+│   ├── __init__.py
+│   ├── data_loader.py    # Data loading functions
+│   ├── analysis.py       # Analysis functions
+│   └── visualization.py  # Plotting functions
+│
+├── tests/                # Unit tests
+│   └── test_analysis.py
+│
+└── main.py              # Main application file</pre>
             </div>
         </div>
-    </div>
+
+        <div class="resource-link">
+            <h4>2. Main Application</h4>
+            <p>Creating the main application file (main.py).</p>
+            <div class="code-example">
+                <pre>
+import yfinance as yf
+import pandas as pd
+import matplotlib.pyplot as plt
+from src.data_loader import load_stock_data
+from src.analysis import analyze_stock
+from src.visualization import create_dashboard
+
+def main():
+    try:
+        # Get user input
+        symbol = input("Enter stock symbol (e.g., AAPL): ").upper()
+        start_date = input("Enter start date (YYYY-MM-DD): ")
+        end_date = input("Enter end date (YYYY-MM-DD): ")
+        
+        # Load data
+        stock_data = load_stock_data(symbol, start_date, end_date)
+        
+        # Perform analysis
+        analysis_results = analyze_stock(stock_data)
+        
+        # Create visualization
+        create_dashboard(stock_data, analysis_results)
+        
+        # Print summary
+        print("\nAnalysis Summary:")
+        print("-" * 40)
+        for metric, value in analysis_results.items():
+            print(f"{metric}: {value:.4f}")
+            
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        
+if __name__ == "__main__":
+    main()</pre>
+            </div>
+        </div>
+
+        <div class="resource-link">
+            <h4>3. Data Loading Module</h4>
+            <p>Creating the data loading module (data_loader.py).</p>
+            <div class="code-example">
+                <pre>
+import yfinance as yf
+import pandas as pd
+
+def load_stock_data(symbol, start_date, end_date):
+    """
+    Load stock data from Yahoo Finance.
     
+    Parameters:
+        symbol (str): Stock symbol
+        start_date (str): Start date in YYYY-MM-DD format
+        end_date (str): End date in YYYY-MM-DD format
+        
+    Returns:
+        pd.DataFrame: Stock data
+    """
+    try:
+        # Download data
+        data = yf.download(symbol, start=start_date, end=end_date)
+        
+        if data.empty:
+            raise ValueError(f"No data found for {symbol}")
+            
+        return data
+        
+    except Exception as e:
+        raise Exception(f"Error loading data: {str(e)}")</pre>
+            </div>
+        </div>
+
+        <div class="resource-link">
+            <h4>4. Analysis Module</h4>
+            <p>Creating the analysis module (analysis.py).</p>
+            <div class="code-example">
+                <pre>
+import numpy as np
+import pandas as pd
+
+def analyze_stock(data):
+    """
+    Perform stock analysis.
+    
+    Parameters:
+        data (pd.DataFrame): Stock data
+        
+    Returns:
+        dict: Analysis results
+    """
+    # Calculate returns
+    data['Returns'] = data['Adj Close'].pct_change()
+    
+    # Calculate metrics
+    total_return = (data['Adj Close'][-1] / data['Adj Close'][0]) - 1
+    volatility = data['Returns'].std() * np.sqrt(252)
+    sharpe_ratio = data['Returns'].mean() / data['Returns'].std() * np.sqrt(252)
+    
+    # Calculate drawdown
+    rolling_max = data['Adj Close'].expanding().max()
+    drawdown = (data['Adj Close'] - rolling_max) / rolling_max
+    max_drawdown = drawdown.min()
+    
+    return {
+        'Total Return': total_return,
+        'Annual Volatility': volatility,
+        'Sharpe Ratio': sharpe_ratio,
+        'Maximum Drawdown': max_drawdown
+    }</pre>
+            </div>
+        </div>
+
+        <h3>Final Project Assignment:</h3>
+        <div class="exercise">
+            <p>Build a complete financial analysis application with these components:</p>
+            <ol>
+                <li>Data Management:
+                    <ul>
+                        <li>Load and validate stock data</li>
+                        <li>Handle missing values</li>
+                        <li>Implement data caching</li>
+                        <li>Add error handling</li>
+                    </ul>
+                </li>
+                <li>Analysis Features:
+                    <ul>
+                        <li>Basic stock metrics</li>
+                        <li>Technical indicators</li>
+                        <li>Performance analysis</li>
+                        <li>Risk metrics</li>
+                    </ul>
+                </li>
+                <li>User Interface:
+                    <ul>
+                        <li>Command-line interface</li>
+                        <li>Input validation</li>
+                        <li>Progress indicators</li>
+                        <li>Clear output formatting</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="chatgpt-tip">
+            <h4>💡 ChatGPT Learning Tips</h4>
+            <p>Use these prompts to enhance your learning:</p>
+            <ol>
+                <li>"Help me understand how to structure a Python project"</li>
+                <li>"Show me how to implement error handling in Python"</li>
+                <li>"Explain how to create a user-friendly command-line interface"</li>
+                <li>"What are best practices for organizing financial analysis code?"</li>
+            </ol>
+        </div>
+    </div>
     
     <div style="text-align: center; margin-top: 20px;">
         <a href="week9.html">← Previous Week</a>
         |
         <a href="week11.html">Next Week →</a>
     </div>
-        <!-- Add the Back to Home button at the bottom as well -->
-        <div class="back-to-home">
-            <a href="index.html">← Back to Home</a>
-        </div>
+
+    <div class="back-to-home">
+        <a href="index.html">← Back to Home</a>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

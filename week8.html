@@ -5,83 +5,297 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 8: Data Visualization with Matplotlib and Seaborn</title>
+    <title>Week 8: Algorithmic Trading and Financial Modeling</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .key-concept {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .exercise {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .resource-link {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .research-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .chatgpt-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .code-example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+   
     <div class="container">
-  <h1>Week 8: Data Visualization with Matplotlib and Seaborn</h1>
-
-  <h2>Objectives</h2>
-  <ul>
-    <li>Learn the basics of data visualization.</li>
-    <li>Understand how to use Matplotlib and Seaborn for creating plots.</li>
-    <li>Visualize financial data using Python.</li>
-  </ul>
-
-  <h2>Topics Covered</h2>
-
-  <h3>Introduction to Data Visualization</h3>
-  <ul>
-    <li><a href="https://realpython.com/python-matplotlib-guide/">Introduction to Matplotlib</a></li>
-    <li><a href="https://seaborn.pydata.org/introduction.html">Introduction to Seaborn</a></li>
-  </ul>
-
-  <h3>Creating Basic Plots</h3>
-  <ul>
-    <li><a href="https://matplotlib.org/stable/tutorials/introductory/pyplot.html">Creating Basic Plots with Matplotlib</a></li>
-    <li><a href="https://seaborn.pydata.org/tutorial/relational.html">Creating Basic Plots with Seaborn</a></li>
-  </ul>
-
-  <h3>Optional Advanced Visualizing Financial Data</h3>
-  <ul>
-    <li><a href="https://plotly.com/python/financial-charts/">Financial Plotting with Plotly+</a></li>
-  </ul>
-
-  <h2>Exercises</h2>
-  <ol>
-    <li>Create a line plot of stock prices using Matplotlib.</li>
-    <li>Visualize a correlation matrix of financial indicators using Seaborn.</li>
-    <li>Create a candlestick chart for a stock.</li>
-  </ol>
-  <div class="container">
-    <h3>Important Reminder:</h3>
-    <div class="alert alert-warning">
-        <h4>Weekly Tasks:</h4>
-        <div id="ChatGPT Lead deep dive">
-            <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-            <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
+        <div class="key-concept">
+            <h2>Week 8: Algorithmic Trading and Financial Modeling</h2>
+            <p class="lead">Learn how to implement trading strategies and create financial models using Python. Understand backtesting, risk management, and portfolio optimization.</p>
         </div>
-        
-        <div id="ChatGPT Assignment">
-            <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-            <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
+
+        <h3>Learning Objectives:</h3>
+        <ul>
+            <li>✓ Understand algorithmic trading concepts</li>
+            <li>✓ Implement basic trading strategies</li>
+            <li>✓ Learn backtesting techniques</li>
+            <li>✓ Create financial models for analysis</li>
+        </ul>
+
+        <div class="resource-link">
+            <h4>1. Basic Trading Strategy</h4>
+            <p>Implementing a simple moving average crossover strategy.</p>
+            <div class="code-example">
+                <pre>
+import pandas as pd
+import numpy as np
+import yfinance as yf
+
+def moving_average_strategy(symbol, short_window=50, long_window=200):
+    # Download data
+    df = yf.download(symbol, start='2022-01-01', end='2023-12-31')
+    
+    # Calculate moving averages
+    df['Short_MA'] = df['Close'].rolling(window=short_window).mean()
+    df['Long_MA'] = df['Close'].rolling(window=long_window).mean()
+    
+    # Generate signals
+    df['Signal'] = 0
+    df['Signal'] = np.where(df['Short_MA'] > df['Long_MA'], 1, 0)
+    df['Position'] = df['Signal'].diff()
+    
+    # Calculate returns
+    df['Returns'] = df['Close'].pct_change()
+    df['Strategy_Returns'] = df['Returns'] * df['Signal'].shift(1)
+    
+    return df
+
+# Test the strategy
+aapl_signals = moving_average_strategy('AAPL')
+cumulative_returns = (1 + aapl_signals['Strategy_Returns']).cumprod()</pre>
+            </div>
+            <a href="https://www.investopedia.com/articles/active-trading/101014/basics-algorithmic-trading-concepts-and-examples.asp" target="_blank">Read more about Algorithmic Trading</a>
+            <div class="research-tip">
+                <p>📚 <strong>Can't access the link?</strong> Use <a href="https://www.perplexity.ai/" target="_blank">Perplexity.ai</a> and search for "algorithmic trading strategies Python tutorial"</p>
+            </div>
+        </div>
+
+        <div class="resource-link">
+            <h4>2. Portfolio Optimization</h4>
+            <p>Implementing Modern Portfolio Theory (MPT) for portfolio optimization.</p>
+            <div class="code-example">
+                <pre>
+def optimize_portfolio(symbols, start_date, end_date):
+    # Download data
+    data = yf.download(symbols, start=start_date, end=end_date)['Adj Close']
+    
+    # Calculate returns
+    returns = data.pct_change()
+    
+    # Calculate mean returns and covariance
+    mean_returns = returns.mean()
+    cov_matrix = returns.cov()
+    
+    # Generate random portfolio weights
+    weights = np.random.random(len(symbols))
+    weights = weights / np.sum(weights)
+    
+    # Calculate portfolio metrics
+    portfolio_return = np.sum(mean_returns * weights) * 252
+    portfolio_std = np.sqrt(np.dot(weights.T, np.dot(cov_matrix * 252, weights)))
+    
+    return {
+        'Return': portfolio_return,
+        'Risk': portfolio_std,
+        'Sharpe': portfolio_return / portfolio_std,
+        'Weights': dict(zip(symbols, weights))
+    }</pre>
+            </div>
+            <a href="https://www.investopedia.com/terms/m/modernportfoliotheory.asp" target="_blank">Read more about Modern Portfolio Theory</a>
+        </div>
+
+        <div class="resource-link">
+            <h4>3. Risk Management</h4>
+            <p>Implementing risk management techniques.</p>
+            <div class="code-example">
+                <pre>
+def calculate_risk_metrics(returns):
+    # Value at Risk (VaR)
+    var_95 = np.percentile(returns, 5)
+    
+    # Expected Shortfall (CVaR)
+    cvar_95 = returns[returns <= var_95].mean()
+    
+    # Maximum Drawdown
+    cumulative = (1 + returns).cumprod()
+    running_max = np.maximum.accumulate(cumulative)
+    drawdowns = (cumulative - running_max) / running_max
+    max_drawdown = np.min(drawdowns)
+    
+    return {
+        'VaR_95': var_95,
+        'CVaR_95': cvar_95,
+        'Max_Drawdown': max_drawdown,
+        'Volatility': returns.std() * np.sqrt(252),
+        'Sharpe_Ratio': returns.mean() / returns.std() * np.sqrt(252)
+    }</pre>
+            </div>
+        </div>
+
+        <h3>Exercises:</h3>
+        <div class="exercise">
+            <ol>
+                <li>Implement a trend-following strategy:
+                    <ul>
+                        <li>Use multiple technical indicators</li>
+                        <li>Implement position sizing</li>
+                        <li>Add stop-loss and take-profit rules</li>
+                        <li>Backtest the strategy</li>
+                    </ul>
+                </li>
+                <li>Create a mean-reversion strategy:
+                    <ul>
+                        <li>Calculate Bollinger Bands</li>
+                        <li>Generate entry/exit signals</li>
+                        <li>Implement risk management rules</li>
+                        <li>Analyze performance metrics</li>
+                    </ul>
+                </li>
+                <li>Build a portfolio optimizer:
+                    <ul>
+                        <li>Implement Efficient Frontier</li>
+                        <li>Add constraints (sector, position size)</li>
+                        <li>Calculate optimal allocations</li>
+                        <li>Generate performance reports</li>
+                    </ul>
+                </li>
+                <li>Create a simple stock screener:
+                    <ul>
+                        <li>Filter stocks based on price</li>
+                        <li>Calculate basic metrics (P/E, market cap)</li>
+                        <li>Sort stocks by performance</li>
+                        <li>Export results to CSV</li>
+                    </ul>
+                </li>
+                <li>Build a basic portfolio tracker:
+                    <ul>
+                        <li>Track daily portfolio value</li>
+                        <li>Calculate simple returns</li>
+                        <li>Create a performance summary</li>
+                        <li>Plot portfolio growth</li>
+                    </ul>
+                </li>
+                <li><strong>Optional Advanced Exercise:</strong> Implement a simple momentum strategy:
+                    <ul>
+                        <li>Calculate monthly returns</li>
+                        <li>Rank stocks by performance</li>
+                        <li>Create a basic trading signal</li>
+                        <li>Visualize strategy results</li>
+                    </ul>
+                    <div class="resource-link">
+                        <h5>📚 Helpful Resources for Momentum Strategy:</h5>
+                        <ul>
+                            <li><a href="https://www.investopedia.com/trading/introduction-to-momentum-trading/" target="_blank">Basic Momentum Strategy Tutorial</a></li>
+                            <li>Step-by-Step Guide:
+                                <pre class="code-example">
+# Example momentum strategy implementation
+import yfinance as yf
+import pandas as pd
+
+def simple_momentum_strategy(symbols, lookback_period=12):
+    # Download data
+    data = yf.download(symbols, 
+                      start='2022-01-01', 
+                      end='2023-12-31')['Adj Close']
+    
+    # Calculate monthly returns
+    monthly_returns = data.resample('M').last().pct_change()
+    
+    # Calculate momentum score (12-month return)
+    momentum_score = monthly_returns.rolling(window=lookback_period).sum()
+    
+    # Rank stocks by momentum
+    ranked_stocks = momentum_score.rank(axis=1, ascending=False)
+    
+    # Create signal (1 for top 3 stocks, 0 for others)
+    signals = (ranked_stocks <= 3).astype(int)
+    
+    return signals
+
+# Example usage:
+symbols = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META']
+signals = simple_momentum_strategy(symbols)</pre>
+                            </li>
+                            <li>Key Concepts to Research:
+                                <ul>
+                                    <li>Monthly returns calculation</li>
+                                    <li>Rolling windows in pandas</li>
+                                    <li>Ranking methods</li>
+                                    <li>Performance visualization</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="chatgpt-tip">
+            <h4>💡 ChatGPT Learning Tips</h4>
+            <p>Use these prompts to enhance your learning:</p>
+            <ol>
+                <li>"Explain how to implement a moving average crossover strategy in Python"</li>
+                <li>"Help me understand portfolio optimization using Modern Portfolio Theory"</li>
+                <li>"Show me how to calculate and interpret various risk metrics"</li>
+                <li>"What are the key considerations when backtesting trading strategies?"</li>
+            </ol>
         </div>
     </div>
-</div>
-  
-  <h2>Additional Resources</h2>
-  <ul>
-    <li><a href="https://realpython.com/tutorials/data-viz/">Data Visualization Tutorials</a></li>
-    <li><a href="https://www.datacamp.com/community/tutorials/seaborn-python-tutorial">Seaborn Tutorial</a></li>
-  </ul>
-  </div>
-  <div style="text-align: center; margin-top: 20px;">
-    <a href="week7.html">← Previous Week</a>
-    |
-    <a href="week9.html">Next Week →</a>
-  </div>
-    <!-- Add the Back to Home button at the bottom as well -->
+    
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="week7.html">← Previous Week</a>
+        |
+        <a href="week9.html">Next Week →</a>
+    </div>
+
     <div class="back-to-home">
-      <a href="index.html">← Back to Home</a>
-  </div>
+        <a href="index.html">← Back to Home</a>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
+
 </html>
