@@ -5,72 +5,171 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 10: Advanced Financial Data Analysis Techniques</title>
+    <title>Week 10: Portfolio Optimization</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .key-concept {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .exercise {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .resource-link {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .research-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .chatgpt-tip {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .code-example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+
     <div class="container">
-        <h2>Week 10: Advanced Financial Data Analysis Techniques-portfolio optimization</h2>
+        <div class="key-concept">
+            <h2>Week 10: Portfolio Optimization</h2>
+            <p class="lead">Learn how to implement Modern Portfolio Theory (MPT) and optimize investment portfolios using Python.</p>
+        </div>
 
         <h3>Learning Objectives:</h3>
         <ul>
-            <li>Learn about portfolio optimization techniques.</li>
-
+            <li>✓ Understand Modern Portfolio Theory and its components</li>
+            <li>✓ Learn to calculate portfolio risk and return</li>
+            <li>✓ Implement portfolio optimization algorithms</li>
+            <li>✓ Create efficient frontier visualizations</li>
+            <li>✓ Apply optimization techniques to real market data</li>
         </ul>
 
-        <h3>Materials:</h3>
+        <div class="resource-link">
+            <h4>1. Foundations of Portfolio Optimization</h4>
+            <p>Start with these fundamental resources:</p>
+            <ul>
+                <li><a href="https://youtu.be/MGOSTRwQpZQ?si=OsMOYImz08WvHS-Q" target="_blank">Optimization: Background and Foundations</a> - Essential video lecture</li>
+                <li><a href="https://www.investopedia.com/managing-wealth/achieve-optimal-asset-allocation/" target="_blank">Portfolio Optimization</a> - Comprehensive overview</li>
+            </ul>
+            <div class="code-example">
+                <pre>
+import numpy as np
+import pandas as pd
+import yfinance as yf
 
-        <h4>1. Portfolio Optimization</h4>
-        <p>Learn about portfolio optimization techniques such as Modern Portfolio Theory (MPT) and how to implement them in Python.</p>
-        <a href="https://youtu.be/MGOSTRwQpZQ?si=OsMOYImz08WvHS-Q" target="_blank">Optimization: background and foundations</a><br>
-        <a href="https://www.investopedia.com/managing-wealth/achieve-optimal-asset-allocation/" target="_blank">Portfolio Optimization</a><br>
-        <a href="https://towardsdatascience.com/efficient-frontier-portfolio-optimisation-in-python-e7844051e7f" target="_blank">Efficient Frontier & Portfolio Optimization in Python</a><br>
+# Download stock data
+tickers = ['AAPL', 'MSFT', 'GOOGL', 'AMZN']
+data = pd.DataFrame()
+for ticker in tickers:
+    data[ticker] = yf.download(ticker)['Adj Close']
 
-
-        <a href="https://lectures.scientific-python.org/" target="_blank">Extended Reading: Scientific Python</a><br>
-
-        <h3>Exercises:</h3>
-        <ol>
-            <li><a href="https://youtu.be/MGOSTRwQpZQ?si=OsMOYImz08WvHS-Q" target="_blank">Watch and summarize the video. Continue your research with ChatGPT and report what you've learned in your video.</a></li>
-            <li>Implement a portfolio optimization algorithm to maximize the Sharpe ratio of a portfolio of stocks.</li>
-
-        </ol>
-    </div>
-
-    <div class="container">
-        <h3>Important Reminder:</h3>
-        <div class="alert alert-warning">
-            <h4>Weekly Tasks:</h4>
-            <div id="ChatGPT Lead deep dive">
-                <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-                <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
-            </div>
-            
-            <div id="ChatGPT Assignment">
-                <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-                <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
+# Calculate returns and covariance
+returns = data.pct_change()
+cov_matrix = returns.cov() * 252  # Annualized covariance</pre>
             </div>
         </div>
+
+        <div class="resource-link">
+            <h4>2. Practical Implementation</h4>
+            <p>Learn how to implement portfolio optimization in Python:</p>
+            <ul>
+                <li><a href="https://towardsdatascience.com/efficient-frontier-portfolio-optimisation-in-python-e7844051e7f" target="_blank">Efficient Frontier & Portfolio Optimization in Python</a> - Step-by-step tutorial</li>
+                <li><a href="https://lectures.scientific-python.org/" target="_blank">Extended Reading: Scientific Python</a> - Advanced concepts</li>
+            </ul>
+            <div class="code-example">
+                <pre>
+from scipy.optimize import minimize
+
+def portfolio_stats(weights, returns, cov):
+    portfolio_return = np.sum(returns.mean() * weights) * 252
+    portfolio_std = np.sqrt(np.dot(weights.T, np.dot(cov, weights)))
+    return portfolio_return, portfolio_std
+
+# Minimize negative Sharpe Ratio
+def neg_sharpe_ratio(weights):
+    p_ret, p_std = portfolio_stats(weights, returns, cov_matrix)
+    return -(p_ret - risk_free_rate) / p_std  # Negative SR for minimization</pre>
+            </div>
+        </div>
+
+        <div class="chatgpt-tip">
+            <h4>💡 ChatGPT Learning Tips</h4>
+            <p>Use these prompts to enhance your understanding of portfolio optimization:</p>
+            <ol>
+                <li>"Explain Modern Portfolio Theory and its key assumptions"</li>
+                <li>"Show me how to calculate portfolio risk and return in Python"</li>
+                <li>"Write code to implement the Efficient Frontier using scipy.optimize"</li>
+                <li>"How can I incorporate risk-free rate in portfolio optimization?"</li>
+                <li>"What are the limitations of MPT and how can we address them?"</li>
+            </ol>
+            <div class="research-tip">
+                <p>📚 <strong>Research Tip:</strong> Use <a href="https://www.perplexity.ai/" target="_blank">Perplexity.ai</a> to search for "Modern Portfolio Theory Python implementation" or "portfolio optimization techniques"</p>
+            </div>
+        </div>
+
+        <div class="exercise">
+            <h4>Weekly Project: Portfolio Optimization Tool</h4>
+            <p>Create a comprehensive portfolio optimization tool that includes:</p>
+            <ol>
+                <li>Data collection and preprocessing for a set of stocks</li>
+                <li>Risk and return calculations</li>
+                <li>Efficient frontier visualization</li>
+                <li>Optimal portfolio weights calculation</li>
+                <li>Performance comparison with benchmark indices</li>
+            </ol>
+            <p>Use the video lecture and provided resources as references for your implementation.</p>
+        </div>
+
+        <h3>Additional Resources</h3>
+        <ul>
+            <li><a href="https://youtu.be/MGOSTRwQpZQ?si=OsMOYImz08WvHS-Q" target="_blank">Watch and summarize the optimization lecture</a></li>
+            <li><a href="https://www.investopedia.com/managing-wealth/achieve-optimal-asset-allocation/" target="_blank">Investopedia: Portfolio Optimization Guide</a></li>
+            <li><a href="https://towardsdatascience.com/efficient-frontier-portfolio-optimisation-in-python-e7844051e7f" target="_blank">Python Implementation Tutorial</a></li>
+            <li><a href="https://lectures.scientific-python.org/" target="_blank">Scientific Python Lectures</a></li>
+        </ul>
     </div>
-    
     
     <div style="text-align: center; margin-top: 20px;">
         <a href="week9.html">← Previous Week</a>
         |
         <a href="week11.html">Next Week →</a>
     </div>
-        <!-- Add the Back to Home button at the bottom as well -->
-        <div class="back-to-home">
-            <a href="index.html">← Back to Home</a>
-        </div>
+
+    <div class="back-to-home">
+        <a href="index.html">← Back to Home</a>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

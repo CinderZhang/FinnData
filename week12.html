@@ -5,55 +5,287 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 12: LLM and Prompt Engineering</title>
+    <title>Week 12: LLMs and Prompt Engineering in Finance</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .key-concept {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .exercise {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .resource-link {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .prompt-example {
+            background-color: #f1f8ff;
+            border: 1px solid #c8e1ff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .research-tip {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+
     <div class="container">
-        <h2>Week 12: LLM and Prompt Engineering</h2>
+        <div class="key-concept">
+            <h2>Week 12: LLMs and Prompt Engineering in Finance</h2>
+            <p class="lead">Learn how to leverage Large Language Models for financial analysis, research, and decision-making through effective prompt engineering.</p>
+        </div>
 
         <h3>Learning Objectives:</h3>
         <ul>
-            <li>Understand prompt engineering in natural language processing.</li>
+            <li>✓ Understand the fundamentals of LLMs and their applications in finance</li>
+            <li>✓ Master prompt engineering techniques for financial analysis</li>
+            <li>✓ Learn to extract structured financial data using LLMs</li>
+            <li>✓ Create effective prompts for market analysis and research</li>
+            <li>✓ Implement best practices for financial prompt engineering</li>
         </ul>
 
-        <h3>Materials:</h3>
+        <div class="resource-link">
+            <h4>1. LLMs in Finance: Core Concepts</h4>
+            <p>Essential resources for understanding LLMs in financial applications:</p>
+            <ul>
+                <li><a href="https://arxiv.org/abs/2311.10723" target="_blank">LLMs in Quantitative Finance</a> - Research paper on applications</li>
+                <li><a href="https://www.youtube.com/watch?v=dOxUroR57xs" target="_blank">OpenAI - ChatGPT for Finance</a> - Official tutorial</li>
+                <li><a href="https://github.com/microsoft/LMOps" target="_blank">Microsoft LMOps</a> - Best practices for LLM operations</li>
+            </ul>
+        </div>
 
-        <!-- Previous sections -->
-
-        <h4>5. Introduction to Prompt Engineering in NLP</h4>
-        <p>Learn about prompt engineering, a technique used in natural language processing to guide the responses of language models.</p>
-        
-        <a href="prompteng.html" target="_blank">Prompt Engineering Tutorials</a>
-
-        <h3>Exercises:</h3>
-        <ol>
-            <!-- Previous exercises -->
-            <li>Learn prompt engineering from a source of your choice and report back.</li>
-        </ol>
-    </div>
-    <div class="container">
-        <h3>Important Reminder:</h3>
-        <div class="alert alert-warning">
-            <h4>Weekly Tasks:</h4>
-            <div id="ChatGPT Lead deep dive">
-                <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-                <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
-            </div>
+        <div class="resource-link">
+            <h4>2. Financial Prompt Engineering Techniques</h4>
+            <p>Learn effective prompting strategies for financial analysis:</p>
             
-            <div id="ChatGPT Assignment">
-                <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-                <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
+            <div class="prompt-example">
+                <h5>Example: Market Analysis Prompt Template</h5>
+                <pre>
+Role: You are a financial analyst specializing in [MARKET_SECTOR]
+Task: Analyze the following market data and provide insights
+Context: [SPECIFIC_MARKET_CONDITIONS]
+Format: Provide analysis in the following structure:
+1. Key Trends
+2. Risk Factors
+3. Opportunities
+4. Recommendations
+Data: [INSERT_MARKET_DATA]</pre>
+            </div>
+
+            <div class="prompt-example">
+                <h5>Example: Financial Research Prompt</h5>
+                <pre>
+Analyze [COMPANY_NAME]'s financial statements:
+1. Calculate key ratios:
+   - P/E Ratio
+   - Debt/Equity
+   - Current Ratio
+2. Compare with industry averages
+3. Identify potential red flags
+4. Suggest areas for deeper analysis
+
+Financial Data: [INSERT_FINANCIAL_DATA]</pre>
             </div>
         </div>
+
+        <div class="resource-link">
+            <h4>3. LLM Tools for Finance</h4>
+            <p>Popular tools and frameworks:</p>
+            <ul>
+                <li><a href="https://github.com/openai/openai-cookbook" target="_blank">OpenAI Cookbook</a> - Financial examples</li>
+                <li><a href="https://github.com/langchain-ai/langchain" target="_blank">LangChain</a> - Framework for LLM applications</li>
+                <li><a href="https://huggingface.co/models?pipeline_tag=text-generation&sort=downloads" target="_blank">Hugging Face Models</a> - Pre-trained financial models</li>
+                <li><a href="https://github.com/microsoft/semantic-kernel" target="_blank">Semantic Kernel</a> - Microsoft's LLM integration framework</li>
+            </ul>
+        </div>
+
+        <div class="resource-link">
+            <h4>4. Best Practices and Guidelines</h4>
+            <ul>
+                <li>Always specify the context and format</li>
+                <li>Use consistent terminology</li>
+                <li>Include validation steps</li>
+                <li>Request specific metrics and ratios</li>
+                <li>Structure output formats</li>
+                <li>Implement error checking</li>
+            </ul>
+            
+            <div class="research-tip">
+                <p>📚 <strong>Research Resources:</strong></p>
+                <ul>
+                    <li>Academic Papers:</li>
+                    <ul>
+                        <li><a href="https://arxiv.org/abs/2302.02094" target="_blank">FinGPT: Large Language Models in Finance</a></li>
+                        <li><a href="https://arxiv.org/abs/2309.05169" target="_blank">Prompt Engineering for Finance</a></li>
+                    </ul>
+                    <li>Online Courses:</li>
+                    <ul>
+                        <li><a href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank">DeepLearning.AI Prompt Engineering</a></li>
+                        <li><a href="https://www.coursera.org/learn/prompt-engineering" target="_blank">Coursera: Prompt Engineering</a></li>
+                    </ul>
+                    <li>Communities:</li>
+                    <ul>
+                        <li><a href="https://www.reddit.com/r/PromptEngineering/" target="_blank">r/PromptEngineering</a></li>
+                        <li><a href="https://discord.gg/openai" target="_blank">OpenAI Discord</a></li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+
+        <div class="resource-link" style="border-left: 4px solid #28a745;">
+            <h4>5. Advanced Topic (Optional): AI Agents and AI Flow</h4>
+            <div class="alert alert-info" style="margin: 15px 0;">
+                <strong>📌 Note:</strong> This section covers advanced concepts in AI agents and AI Flow. It is entirely optional and supplementary to the core prompt engineering content. Feel free to explore these topics if you're interested in autonomous AI systems.
+            </div>
+            
+            <p>For those interested in exploring the cutting edge of AI applications in finance, this section covers autonomous AI agents and the AI Flow paradigm:</p>
+            
+            <div class="key-concept">
+                <h5>Understanding AI Agents</h5>
+                <ul>
+                    <li><strong>Definition:</strong> Autonomous systems that can perceive their environment, make decisions, and take actions</li>
+                    <li><strong>Components:</strong>
+                        <ul>
+                            <li>Perception (data input)</li>
+                            <li>Reasoning (decision making)</li>
+                            <li>Action (output/execution)</li>
+                            <li>Learning (improvement over time)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="prompt-example">
+                <h5>Example: Financial AI Agent Prompt</h5>
+                <pre>
+Role: You are an AI agent specialized in [FINANCIAL_DOMAIN]
+Objective: [SPECIFIC_GOAL]
+Tools Available:
+- Data Analysis
+- Market Research
+- Trading Execution
+- Risk Assessment
+
+Process:
+1. Analyze current market conditions
+2. Evaluate potential actions
+3. Execute chosen strategy
+4. Monitor and adjust
+
+Constraints:
+- Risk limits: [SPECIFY]
+- Time horizon: [SPECIFY]
+- Resource limitations: [SPECIFY]</pre>
+            </div>
+
+            <h5>AI Flow Resources:</h5>
+            <ul>
+                <li><a href="https://github.com/microsoft/autogen" target="_blank">AutoGen</a> - Multi-agent conversation framework</li>
+                <li><a href="https://github.com/langchain-ai/langchain" target="_blank">LangChain Agents</a> - Agent development toolkit</li>
+                <li><a href="https://python.langchain.com/docs/modules/agents/" target="_blank">LangChain Agents Documentation</a></li>
+                <li><a href="https://github.com/Significant-Gravitas/Auto-GPT" target="_blank">Auto-GPT</a> - Autonomous GPT-4 agent framework</li>
+            </ul>
+
+            <div class="research-tip">
+                <p>🎯 <strong>Optional Learning Path:</strong></p>
+                <p>If you're interested in AI agents, we recommend this progression:</p>
+                <ol>
+                    <li>Start with basic prompt engineering (covered in main sections)</li>
+                    <li>Experiment with simple agents using LangChain</li>
+                    <li>Progress to more complex frameworks like AutoGen</li>
+                    <li>Finally, explore building custom financial agents</li>
+                </ol>
+                <p><em>Remember: The core content for this week focuses on prompt engineering. Agent development is an advanced topic that you can explore based on your interests.</em></p>
+            </div>
+
+            <div class="exercise">
+                <h5>AI Agent Project Ideas:</h5>
+                <ol>
+                    <li>Market Research Agent
+                        <ul>
+                            <li>Collect and analyze market data</li>
+                            <li>Generate insights and reports</li>
+                            <li>Monitor specific indicators</li>
+                        </ul>
+                    </li>
+                    <li>Portfolio Management Agent
+                        <ul>
+                            <li>Track portfolio performance</li>
+                            <li>Suggest rebalancing actions</li>
+                            <li>Generate risk reports</li>
+                        </ul>
+                    </li>
+                    <li>News Analysis Agent
+                        <ul>
+                            <li>Monitor financial news</li>
+                            <li>Analyze sentiment</li>
+                            <li>Generate summaries</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="key-concept">
+                <h5>AI Flow Paradigm</h5>
+                <p>Understanding the modern approach to AI agent development:</p>
+                <ul>
+                    <li><strong>Components:</strong>
+                        <ul>
+                            <li>Task Planning: Breaking down complex tasks</li>
+                            <li>Tool Usage: Leveraging available APIs and functions</li>
+                            <li>Memory Management: Maintaining context and history</li>
+                            <li>Error Handling: Graceful recovery from failures</li>
+                        </ul>
+                    </li>
+                    <li><strong>Best Practices:</strong>
+                        <ul>
+                            <li>Clear objective definition</li>
+                            <li>Proper error handling</li>
+                            <li>Effective tool integration</li>
+                            <li>Continuous monitoring</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Additional Resources</h3>
+        <ul>
+            <li><a href="https://learnprompting.org/docs/basics/intro" target="_blank">Learn Prompting</a> - Comprehensive guide</li>
+            <li><a href="https://www.promptingguide.ai/" target="_blank">Prompting Guide</a> - Best practices</li>
+            <li><a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank">OpenAI Documentation</a></li>
+            <li><strong>Financial Applications:</strong>
+                <ul>
+                    <li><a href="https://github.com/topics/financial-analysis" target="_blank">GitHub Financial Analysis</a></li>
+                    <li><a href="https://www.kaggle.com/learn/intro-to-ai-ethics" target="_blank">AI Ethics in Finance</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
     
     <div style="text-align: center; margin-top: 20px;">
@@ -61,10 +293,11 @@
         |
         <a href="week13.html">Next Week →</a>
     </div>
-        <!-- Add the Back to Home button at the bottom as well -->
-        <div class="back-to-home">
-            <a href="index.html">← Back to Home</a>
-        </div>
+
+    <div class="back-to-home">
+        <a href="index.html">← Back to Home</a>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

@@ -7,81 +7,316 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 8: Data Visualization with Matplotlib and Seaborn</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .code-example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+        .exercise {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .key-concept {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .chatgpt-tip {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+
     <div class="container">
-  <h1>Week 8: Data Visualization with Matplotlib and Seaborn</h1>
-
-  <h2>Objectives</h2>
-  <ul>
-    <li>Learn the basics of data visualization.</li>
-    <li>Understand how to use Matplotlib and Seaborn for creating plots.</li>
-    <li>Visualize financial data using Python.</li>
-  </ul>
-
-  <h2>Topics Covered</h2>
-
-  <h3>Introduction to Data Visualization</h3>
-  <ul>
-    <li><a href="https://realpython.com/python-matplotlib-guide/">Introduction to Matplotlib</a></li>
-    <li><a href="https://seaborn.pydata.org/introduction.html">Introduction to Seaborn</a></li>
-  </ul>
-
-  <h3>Creating Basic Plots</h3>
-  <ul>
-    <li><a href="https://matplotlib.org/stable/tutorials/introductory/pyplot.html">Creating Basic Plots with Matplotlib</a></li>
-    <li><a href="https://seaborn.pydata.org/tutorial/relational.html">Creating Basic Plots with Seaborn</a></li>
-  </ul>
-
-  <h3>Optional Advanced Visualizing Financial Data</h3>
-  <ul>
-    <li><a href="https://plotly.com/python/financial-charts/">Financial Plotting with Plotly+</a></li>
-  </ul>
-
-  <h2>Exercises</h2>
-  <ol>
-    <li>Create a line plot of stock prices using Matplotlib.</li>
-    <li>Visualize a correlation matrix of financial indicators using Seaborn.</li>
-    <li>Create a candlestick chart for a stock.</li>
-  </ol>
-  <div class="container">
-    <h3>Important Reminder:</h3>
-    <div class="alert alert-warning">
-        <h4>Weekly Tasks:</h4>
-        <div id="ChatGPT Lead deep dive">
-            <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-            <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
+        <div class="key-concept">
+            <h1>Week 8: Data Visualization with Matplotlib and Seaborn</h1>
+            <p class="lead">Master financial data visualization techniques using Python's powerful plotting libraries</p>
         </div>
-        
-        <div id="ChatGPT Assignment">
-            <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-            <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
+
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Create professional financial market visualizations</li>
+            <li>Develop interactive fixed income analysis charts</li>
+            <li>Build comprehensive economic indicator dashboards</li>
+            <li>Master advanced market analysis visualization techniques</li>
+        </ul>
+
+        <h2>Core Topics</h2>
+
+        <div class="key-concept">
+            <h3>1. Market Data Visualization</h3>
+            <div class="code-example">
+                <pre>
+import matplotlib.pyplot as plt
+import yfinance as yf
+import seaborn as sns
+
+# Download stock data
+stock = yf.download('AAPL', start='2023-01-01')
+
+# Create figure with secondary y-axis
+fig, ax1 = plt.subplots(figsize=(12,6))
+ax2 = ax1.twinx()
+
+# Plot price and volume
+ax1.plot(stock.index, stock['Close'], 'b-', label='Price')
+ax2.bar(stock.index, stock['Volume'], alpha=0.3, color='gray', label='Volume')
+
+plt.title('AAPL Price and Volume Analysis')
+plt.show()</pre>
+            </div>
+            <ul>
+                <li>Price and volume analysis</li>
+                <li>Candlestick patterns</li>
+                <li>OHLC charts</li>
+                <li>Moving averages and technical indicators</li>
+            </ul>
         </div>
+
+        <div class="key-concept">
+            <h3>2. Treasury Yield Curve Inversion and Recession Indicator</h3>
+            <p>The yield curve "inverts" when short-term rates become higher than long-term rates. This is often considered a recession warning signal.</p>
+            <div class="code-example">
+                <pre>
+import pandas_datareader as pdr
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Get Treasury rates data from FRED
+# 10-year minus 2-year spread is a common recession predictor
+rates = pd.DataFrame()
+rates['10YR'] = pdr.get_data_fred('DGS10')  # 10-year rate
+rates['2YR'] = pdr.get_data_fred('DGS2')    # 2-year rate
+rates['Spread'] = rates['10YR'] - rates['2YR']  # Yield curve spread
+
+# Get recession data
+recession = pdr.get_data_fred('USREC')
+
+# Create figure with two subplots
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10), height_ratios=[2, 1])
+
+# Plot 1: Treasury Rates
+ax1.plot(rates.index, rates['10YR'], 'b-', label='10-Year Treasury')
+ax1.plot(rates.index, rates['2YR'], 'r-', label='2-Year Treasury')
+
+# Highlight recession periods in both plots
+for i in range(len(recession)-1):
+    if recession['USREC'].iloc[i] == 1:
+        ax1.axvspan(recession.index[i], recession.index[i+1], 
+                   color='gray', alpha=0.2)
+        ax2.axvspan(recession.index[i], recession.index[i+1], 
+                   color='gray', alpha=0.2)
+
+ax1.set_title('Treasury Rates: 10-Year vs 2-Year')
+ax1.set_ylabel('Yield (%)')
+ax1.grid(True)
+ax1.legend()
+
+# Plot 2: Yield Curve Spread
+ax2.plot(rates.index, rates['Spread'], 'g-', label='10Y-2Y Spread')
+ax2.axhline(y=0, color='r', linestyle='--', alpha=0.5)  # Add zero line
+ax2.fill_between(rates.index, rates['Spread'], 0, 
+                 where=(rates['Spread'] < 0),
+                 color='r', alpha=0.3,
+                 label='Yield Curve Inversion')
+
+ax2.set_title('Yield Curve Spread (10Y-2Y)')
+ax2.set_ylabel('Spread (%)')
+ax2.grid(True)
+ax2.legend()
+
+plt.tight_layout()
+plt.show()
+
+# Let's also show a typical yield curve shape
+# Get current Treasury rates for different maturities
+maturities = ['1MO', '3MO', '6MO', '1YR', '2YR', '5YR', '10YR', '30YR']
+tickers = ['DGS1MO', 'DGS3MO', 'DGS6MO', 'DGS1', 'DGS2', 'DGS5', 'DGS10', 'DGS30']
+current_rates = pd.DataFrame()
+
+for ticker in tickers:
+    current_rates[ticker] = pdr.get_data_fred(ticker)
+
+# Plot current yield curve
+plt.figure(figsize=(10, 6))
+plt.plot(range(len(maturities)), current_rates.iloc[-1], 'bo-', label='Current')
+
+# Add labels
+plt.title('Current Treasury Yield Curve Shape')
+plt.xlabel('Maturity')
+plt.ylabel('Yield (%)')
+plt.xticks(range(len(maturities)), maturities, rotation=45)
+plt.grid(True)
+
+# Add annotation about curve shape
+if current_rates.iloc[-1]['DGS2'] > current_rates.iloc[-1]['DGS10']:
+    plt.text(0.6, 0.9, 'Inverted Yield Curve\n(Potential Recession Signal)', 
+             transform=plt.gca().transAxes, 
+             bbox=dict(facecolor='red', alpha=0.2))
+else:
+    plt.text(0.6, 0.9, 'Normal Yield Curve', 
+             transform=plt.gca().transAxes, 
+             bbox=dict(facecolor='green', alpha=0.2))
+
+plt.legend()
+plt.tight_layout()
+plt.show()</pre>
+            </div>
+            <ul>
+                <li>Comparison of 10-year and 2-year Treasury rates</li>
+                <li>Yield curve spread (10Y-2Y) as recession indicator</li>
+                <li>Visualization of yield curve inversion periods</li>
+                <li>Current yield curve shape with interpretation</li>
+            </ul>
+            <div class="key-concept">
+                <h4>Understanding the Plots:</h4>
+                <ul>
+                    <li>Normal Yield Curve: Long-term rates (10Y) higher than short-term rates (2Y)</li>
+                    <li>Inverted Yield Curve: Short-term rates higher than long-term rates (spread goes negative)</li>
+                    <li>Gray areas show historical recession periods</li>
+                    <li>Red shading shows periods of yield curve inversion</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="key-concept">
+            <h3>3. Economic Indicators</h3>
+            <div class="code-example">
+                <pre>
+# Create recession highlighting
+import pandas_datareader as pdr
+from datetime import datetime
+
+# Get GDP data
+gdp = pdr.get_data_fred('GDP', start='2000-01-01')
+recession = pdr.get_data_fred('USREC', start='2000-01-01')
+
+# Plot GDP with recession highlighting
+plt.figure(figsize=(12,6))
+plt.plot(gdp.index, gdp['GDP'], 'b-', label='GDP')
+
+# Highlight recession periods
+for i in range(len(recession)):
+    if recession['USREC'].iloc[i] == 1:
+        plt.axvspan(recession.index[i], recession.index[i+1], 
+                   color='gray', alpha=0.2)
+
+plt.title('US GDP with Recession Periods')
+plt.legend()
+plt.show()</pre>
+            </div>
+            <ul>
+                <li>GDP growth visualization</li>
+                <li>Inflation analysis charts</li>
+                <li>Recession period analysis</li>
+                <li>Economic indicator correlations</li>
+            </ul>
+        </div>
+
+        <div class="key-concept">
+            <h3>4. Advanced Market Analysis</h3>
+            <div class="code-example">
+                <pre>
+# Create sector performance treemap
+import squarify
+
+sizes = [30, 25, 20, 15, 10, 8, 7, 6, 5, 4, 3]
+labels = ['Tech', 'Finance', 'Healthcare', 'Consumer', 'Industry',
+          'Energy', 'Materials', 'Utilities', 'Real Estate', 'Telecom']
+colors = sns.color_palette('RdYlBu', len(sizes))
+
+plt.figure(figsize=(12,8))
+squarify.plot(sizes=sizes, label=labels, color=colors, alpha=0.8)
+plt.title('Market Sector Performance')
+plt.axis('off')
+plt.show()</pre>
+            </div>
+            <ul>
+                <li>Sector performance treemaps</li>
+                <li>Volatility surface visualization</li>
+                <li>Risk-return scatter plots</li>
+                <li>Market breadth indicators</li>
+            </ul>
+        </div>
+
+        <h2>Exercises</h2>
+        <div class="exercise">
+            <h4>Basic Exercises:</h4>
+            <ol>
+                <li>Create a stock price chart with volume and moving averages</li>
+                <li>Plot a current yield curve using Treasury data</li>
+                <li>Visualize inflation data with recession highlighting</li>
+            </ol>
+
+            <h4>Intermediate Exercises:</h4>
+            <ol>
+                <li>Build a yield curve animation showing changes over time</li>
+                <li>Create a sector rotation analysis dashboard</li>
+                <li>Develop a bond price sensitivity visualization tool</li>
+            </ol>
+
+            <h4>Advanced Exercises:</h4>
+            <ol>
+                <li>Create a comprehensive market dashboard combining multiple indicators</li>
+                <li>Build an interactive yield curve analysis tool</li>
+                <li>Develop a real-time market breadth visualization system</li>
+            </ol>
+        </div>
+
+        <div class="chatgpt-tip">
+            <h4>💡 ChatGPT Learning Tips</h4>
+            <p>Use these prompts to enhance your understanding of financial data visualization:</p>
+            <ol>
+                <li>"Create a Python code example that plots a stock's price and volume using matplotlib"</li>
+                <li>"Explain how to create a Treasury yield curve visualization using Python and FRED data"</li>
+                <li>"Show me how to highlight recession periods in a financial time series plot"</li>
+                <li>"Write code to create an interactive financial dashboard using matplotlib"</li>
+                <li>"What are the best practices for visualizing financial market data?"</li>
+            </ol>
+            <div class="research-tip">
+                <p>📚 <strong>Research Tip:</strong> Use <a href="https://www.perplexity.ai/" target="_blank">Perplexity.ai</a> to search for "financial data visualization examples Python" or "Treasury yield curve analysis Python"</p>
+            </div>
+        </div>
+
+        <h2>Additional Resources</h2>
+        <ul>
+            <li><a href="https://matplotlib.org/stable/gallery/index.html" target="_blank">Matplotlib Gallery</a></li>
+            <li><a href="https://seaborn.pydata.org/examples/index.html" target="_blank">Seaborn Example Gallery</a></li>
+            <li><a href="https://plotly.com/python/financial-charts/" target="_blank">Plotly Financial Charts</a></li>
+            <li><a href="https://fred.stlouisfed.org/docs/api/fred/" target="_blank">FRED API Documentation</a></li>
+        </ul>
     </div>
-</div>
-  
-  <h2>Additional Resources</h2>
-  <ul>
-    <li><a href="https://realpython.com/tutorials/data-viz/">Data Visualization Tutorials</a></li>
-    <li><a href="https://www.datacamp.com/community/tutorials/seaborn-python-tutorial">Seaborn Tutorial</a></li>
-  </ul>
-  </div>
-  <div style="text-align: center; margin-top: 20px;">
-    <a href="week7.html">← Previous Week</a>
-    |
-    <a href="week9.html">Next Week →</a>
-  </div>
-    <!-- Add the Back to Home button at the bottom as well -->
+    
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="week7.html">← Previous Week</a>
+        |
+        <a href="week9.html">Next Week →</a>
+    </div>
+
     <div class="back-to-home">
-      <a href="index.html">← Back to Home</a>
-  </div>
+        <a href="index.html">← Back to Home</a>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
+
 </html>

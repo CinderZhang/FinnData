@@ -7,76 +7,388 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 13: Capstone Project</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .project-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #28a745;
+        }
+        .requirements {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .example-project {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .resource-link {
+            background-color: #f1f8ff;
+            border: 1px solid #c8e1ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        .submission-guide {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .mindset-quote {
+            font-style: italic;
+            color: #6c757d;
+            border-left: 4px solid #007bff;
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Add the Back to Home button at the bottom as well -->
     <nav>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style-type: none; padding: 0; font-weight: bold; font-size: 1.2em; justify-content: center;">
+            <li><a href="index.html" style="text-decoration: none; color: #007bff;">Home</a></li>
             <li><a href="about.html" style="text-decoration: none; color: #007bff;">About</a></li>
             <li><a href="contact.html" style="text-decoration: none; color: #007bff;">Contact</a></li>
         </ul>
     </nav>
+
     <div class="container">
-        <div style="text-align: center;">
-            <a href="week12.html">← Previous Week</a>
+        <div class="project-section">
+            <h2>Week 13: Capstone Project - Building Your Financial Analytics Portfolio</h2>
+            <p class="lead">Transform your course knowledge into a professional-grade financial analytics project.</p>
         </div>
 
-        <h2>Week 13: Capstone Project</h2>
+        <div class="mindset-quote">
+            "The best way to predict the future is to create it." - Peter Drucker
+        </div>
 
         <h3>Learning Objectives:</h3>
         <ul>
-            <li>Apply the skills and knowledge acquired throughout the course in a real-world project.</li>
-            <li>Develop a financial data analysis application using Python.</li>
-            <li>Present the project and receive feedback.</li>
+            <li>✓ Design and implement a practical financial data analysis solution</li>
+            <li>✓ Apply data analysis techniques to real financial data</li>
+            <li>✓ Create a professional portfolio piece showcasing your skills</li>
+            <li>✓ Present your analysis clearly to different audiences</li>
         </ul>
 
-        <h3>Capstone Project:</h3>
-        <p>For the final week, you will work on a capstone project that involves creating a financial data analysis application using Python. This project should incorporate the various concepts and skills learned throughout the course, including data manipulation, visualization, web scraping, API usage, and machine learning.</p>
-
-        <h3>Project Requirements:</h3>
-        <ul>
-            <li>Use Python for data analysis and manipulation.</li>
-            <li>Include data visualization components.</li>
-            <li>Implement web scraping or API integration to gather financial data.</li>
-            <li>Apply machine learning algorithms for predictive analysis.</li>
-            <li>Document the code and write a report explaining the methodology and results.</li>
-            <li>Present the project to peers and instructors.</li>
-        </ul>
-
-        <h3>Resources:</h3>
-        <a href="https://www.python.org/" target="_blank">Python Official Website</a><br>
-        <a href="https://pandas.pydata.org/" target="_blank">Pandas Documentation</a><br>
-        <a href="https://matplotlib.org/" target="_blank">Matplotlib Documentation</a><br>
-        <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn Documentation</a><br>
-
-        <h3>Submission:</h3>
-        <p>Submit your code, documentation, and presentation slides before the deadline. Ensure that you have tested the application thoroughly and that the documentation is clear and concise.</p>
-
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="week12.html">← Previous Week</a>
+        <div class="requirements">
+            <h4>🎯 Project Requirements</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Technical Components:</h5>
+                    <ul>
+                        <li>Data Collection & Processing
+                            <ul>
+                                <li>Data download from WRDS/websites</li>
+                                <li>Basic data cleaning and formatting</li>
+                                <li>CSV/Excel file handling</li>
+                            </ul>
+                        </li>
+                        <li>Analysis
+                            <ul>
+                                <li>Basic statistical measures</li>
+                                <li>Financial calculations</li>
+                                <li>Performance metrics</li>
+                            </ul>
+                        </li>
+                        <li>Visualization
+                            <ul>
+                                <li>Clear charts and graphs</li>
+                                <li>Summary tables</li>
+                                <li>Trend analysis</li>
+                            </ul>
+                        </li>
+                        <li>Graphical User Interface
+                            <ul>
+                                <li>Web-based interface (Streamlit/Dash/Gradio)</li>
+                                <li>Interactive components</li>
+                                <li>Responsive design</li>
+                                <li>Real-time updates</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5>Professional Components:</h5>
+                    <ul>
+                        <li>Documentation
+                            <ul>
+                                <li>Clear README file</li>
+                                <li>Code comments</li>
+                                <li>Usage instructions</li>
+                                <li>GUI screenshots</li>
+                            </ul>
+                        </li>
+                        <li>Code Quality
+                            <ul>
+                                <li>Clean, readable code</li>
+                                <li>Basic error handling</li>
+                                <li>Code organization</li>
+                            </ul>
+                        </li>
+                        <li>Presentation
+                            <ul>
+                                <li>Project slides</li>
+                                <li>Live demo</li>
+                                <li>Analysis explanation</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="container">
-        <h3>Important Reminder:</h3>
-        <div class="alert alert-warning">
-            <h4>Weekly Tasks:</h4>
-            <div id="ChatGPT Lead deep dive">
-                <h5>Personalized Python Learning with ChatGPT Plus - 10 or More prompts/conversations required on each topic</h5>
-                <p>Use this <a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor" target="_blank">PROMPT</a> to personalize your learning experience with ChatGPT Plus</p>
+
+        <div class="example-project">
+            <h4>💡 Example Project Ideas (All with GUI)</h4>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>1. Retirement Planning Calculator</h5>
+                    <ul>
+                        <li>Input fields for age, savings, goals</li>
+                        <li>Sliders for return rates</li>
+                        <li>Interactive results graphs</li>
+                        <li>Save/load functionality</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>2. Stock Portfolio Analysis</h5>
+                    <ul>
+                        <li>Stock symbol input</li>
+                        <li>Date range selection</li>
+                        <li>Portfolio weight adjustments</li>
+                        <li>Performance charts</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>3. Personal Finance Dashboard</h5>
+                    <ul>
+                        <li>Income/expense entry forms</li>
+                        <li>Category management</li>
+                        <li>Budget vs. actual graphs</li>
+                        <li>Export reports feature</li>
+                    </ul>
+                </div>
             </div>
             
-            <div id="ChatGPT Assignment">
-                <h5>Test your knowledge of Python weekly topics On ChatGPT Plus</h5>
-                <p>Use this <a href="https://github.com/CinderZhang/FinnData/blob/main/chatGPT_AssignmentSample.md" target="_blank">PROMPT</a> to test your knowledge and grade it by ChatGPT</p>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <h5>4. Loan Calculator</h5>
+                    <ul>
+                        <li>Loan type selection</li>
+                        <li>Payment calculator form</li>
+                        <li>Amortization table</li>
+                        <li>Payment schedule graphs</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>5. Company Financial Analysis</h5>
+                    <ul>
+                        <li>Company search/selection</li>
+                        <li>Ratio calculation options</li>
+                        <li>Peer comparison tools</li>
+                        <li>Export analysis reports</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>6. Investment Calculator</h5>
+                    <ul>
+                        <li>Investment strategy inputs</li>
+                        <li>Goal setting interface</li>
+                        <li>Scenario comparison</li>
+                        <li>Progress tracking views</li>
+                    </ul>
+                </div>
             </div>
         </div>
+
+        <div class="resource-link">
+            <h4>🛠️ Development Resources</h4>
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>Data Sources:</h5>
+                    <ul>
+                        <li><a href="https://wrds-www.wharton.upenn.edu/" target="_blank">WRDS (Primary Source)</a></li>
+                        <li><a href="https://fred.stlouisfed.org/" target="_blank">FRED Economic Data</a></li>
+                        <li><a href="https://finance.yahoo.com/" target="_blank">Yahoo Finance (Backup)</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Web App Frameworks:</h5>
+                    <ul>
+                        <li><a href="https://streamlit.io/" target="_blank">Streamlit</a> - Quick & easy apps</li>
+                        <li><a href="https://dash.plotly.com/" target="_blank">Dash</a> - Interactive dashboards</li>
+                        <li><a href="https://gradio.app/" target="_blank">Gradio</a> - Simple interfaces</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Visualization:</h5>
+                    <ul>
+                        <li><a href="https://plotly.com/python/" target="_blank">Plotly</a> - Interactive charts</li>
+                        <li><a href="https://altair-viz.github.io/" target="_blank">Altair</a> - Declarative viz</li>
+                        <li><a href="https://seaborn.pydata.org/" target="_blank">Seaborn</a> - Statistical viz</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Documentation:</h5>
+                    <ul>
+                        <li><a href="https://docs.streamlit.io/" target="_blank">Streamlit Docs</a></li>
+                        <li><a href="https://dash.plotly.com/tutorial" target="_blank">Dash Tutorial</a></li>
+                        <li><a href="https://www.gradio.app/guides" target="_blank">Gradio Guides</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info">
+            <h4>📌 Web App Development Tips:</h4>
+            <ul>
+                <li><strong>Choose your framework:</strong>
+                    <ul>
+                        <li>Streamlit: Fastest to build, perfect for data apps</li>
+                        <li>Dash: Best for complex dashboards</li>
+                        <li>Gradio: Simple interfaces, good for demos</li>
+                    </ul>
+                </li>
+                <li><strong>Best Practices:</strong>
+                    <ul>
+                        <li>Use caching for expensive computations</li>
+                        <li>Add interactive filters and controls</li>
+                        <li>Include download/export options</li>
+                        <li>Show loading states for long operations</li>
+                    </ul>
+                </li>
+                <li><strong>Common Features to Include:</strong>
+                    <ul>
+                        <li>Data upload/download capabilities</li>
+                        <li>Interactive plots with zoom/pan</li>
+                        <li>Sidebar for controls/settings</li>
+                        <li>Clear error messages and help text</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="example-project">
+            <h4>💡 Example Project Ideas (Web Apps)</h4>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>1. Retirement Planning App (Streamlit)</h5>
+                    <ul>
+                        <li>Sidebar for inputs and assumptions</li>
+                        <li>Interactive retirement calculator</li>
+                        <li>Dynamic charts with Plotly</li>
+                        <li>Scenario comparison</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>2. Portfolio Dashboard (Dash)</h5>
+                    <ul>
+                        <li>Real-time portfolio tracking</li>
+                        <li>Interactive stock charts</li>
+                        <li>Risk metrics calculation</li>
+                        <li>PDF report generation</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>3. Budget Tracker (Streamlit)</h5>
+                    <ul>
+                        <li>CSV/Excel file upload</li>
+                        <li>Category-wise analysis</li>
+                        <li>Spending patterns visualization</li>
+                        <li>Monthly report download</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <h5>4. Loan Analysis Tool (Gradio)</h5>
+                    <ul>
+                        <li>Simple loan comparison interface</li>
+                        <li>Payment schedule visualization</li>
+                        <li>What-if scenario analysis</li>
+                        <li>Results explanation</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>5. Company Analysis (Dash)</h5>
+                    <ul>
+                        <li>WRDS data integration</li>
+                        <li>Financial ratio dashboard</li>
+                        <li>Peer comparison charts</li>
+                        <li>Custom report builder</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>6. Investment Calculator (Streamlit)</h5>
+                    <ul>
+                        <li>Investment strategy simulator</li>
+                        <li>Historical performance analysis</li>
+                        <li>Risk-return visualization</li>
+                        <li>Strategy backtesting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="submission-guide">
+            <h4>📝 Submission Guidelines</h4>
+            <ol>
+                <li><strong>GitHub Repository</strong>
+                    <ul>
+                        <li>Clean, documented code</li>
+                        <li>Clear README.md</li>
+                        <li>Requirements.txt</li>
+                    </ul>
+                </li>
+                <li><strong>Documentation</strong>
+                    <ul>
+                        <li>Project overview</li>
+                        <li>Installation guide</li>
+                        <li>Usage examples</li>
+                    </ul>
+                </li>
+                <li><strong>Presentation</strong>
+                    <ul>
+                        <li>15-minute demo</li>
+                        <li>Technical deep-dive</li>
+                        <li>Future improvements</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="alert alert-info">
+            <h4>💫 Final Tips</h4>
+            <ul>
+                <li>Start early and iterate often</li>
+                <li>Focus on clean code and documentation</li>
+                <li>Test thoroughly before submission</li>
+                <li>Prepare a compelling presentation</li>
+                <li>Be ready to explain your technical choices</li>
+            </ul>
+        </div>
+
+        <div class="mindset-quote">
+            "Your capstone project is not just a final assignment - it's the beginning of your professional portfolio."
+        </div>
     </div>
-    
-    <!-- Add the Back to Home button at the bottom as well -->
-    <div class="back-to-home">
+
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="week12.html">← Previous Week</a>
+    </div>
+
+    <div class="back-to-home" style="text-align: center; margin-top: 20px;">
         <a href="index.html">← Back to Home</a>
     </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
