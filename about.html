@@ -5,31 +5,116 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Dr. Xinde Zhang</title>
+    <title>About Dr. Cinder Xinde Zhang</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding-top: 20px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style-type: none;
+            padding: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .nav-links .active a {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        .page-header {
+            border-bottom: 1px solid #eee;
+            margin: 40px 0 20px;
+            padding-bottom: 9px;
+        }
+        .page-header h1 {
+            margin: 0;
+            color: #333;
+            font-size: 36px;
+            display: inline-block;
+        }
+        .cv-button {
+            transition: all 0.3s ease;
+        }
+        .cv-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        section {
+            margin-bottom: 30px;
+        }
+        .mb-5 {
+            margin-bottom: 3rem;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">Data Analytics I</a>
-            </div>
-            <ul class="nav navbar-nav">
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="philosophy.html">Teaching Philosophy</a></li>
                 <li class="active"><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
-    <div style="height: 80px;"></div>
 
-        <h1>About Dr. Xinde Zhang</h1>
-        
-        <p>Dr. Xinde Zhang is an Associate Teaching Professor at the Sam M. Walton College of Business, University of Arkansas. He specializes in financial data analytics, machine learning, and artificial intelligence. Dr. Zhang is dedicated to integrating cutting-edge technology into finance education, helping students develop practical skills that are essential in today's data-driven world.</p>
+    <div class="container">
+        <div class="page-header">
+            <h1>About Dr. Cinder Xinde Zhang</h1>
+            <div style="text-align: right; margin-top: 20px;">
+                <a href="resources/CV-XindeZhang.pdf" class="btn btn-primary cv-button" target="_blank">
+                    <i class="glyphicon glyphicon-file"></i> View Full CV
+                </a>
+            </div>
+        </div>
 
-        <h2>Teaching Philosophy</h2>
-        <p>Dr. Zhang's teaching approach emphasizes the integration of technology in the classroom. He uses tools such as Python programming, Dataiku, and generative AI (e.g., ChatGPT) to enhance the learning experience. His goal is to foster a problem-solving mindset in students, preparing them for successful careers in finance and data analytics.</p>
+        <section id="finance-scholar" class="mb-5">
+            <h2 class="text-primary">Finance Scholar</h2>
+            <p>A distinguished researcher with publications in top-tier finance journals including:</p>
+            <ul>
+                <li>Journal of Financial and Quantitative Analysis (JFQA)</li>
+                <li>Journal of Corporate Finance (JCF)</li>
+                <li>Journal of Banking and Finance (JBF)</li>
+                <li>经济研究 (Economic Research Journal)</li>
+            </ul>
+        </section>
+
+        <section id="tech-expertise" class="mb-5">
+            <h2 class="text-primary">Tech-Savvy Financial Expert</h2>
+            <p>Leading the intersection of finance and technology through:</p>
+            <ul>
+                <li>Pioneering work in AI agents and their applications in finance</li>
+                <li>Development of Agentic Financial Analysis frameworks</li>
+                <li>Integration of Generative AI in financial research and education</li>
+            </ul>
+        </section>
+
+        <section id="education-impact" class="mb-5">
+            <h2 class="text-primary">Educational Innovation</h2>
+            <p>Shaping the future of financial education:</p>
+            <ul>
+                <li>Founded the innovative Financial Analytics program</li>
+                <li>Achieved 138 student enrollment within the first year</li>
+                <li>Maintained 100% success rate in graduate employment with return offers</li>
+            </ul>
+        </section>
+
+        <section id="teaching-philosophy">
+            <h2>Teaching Philosophy</h2>
+            <p>Dr. Zhang's teaching approach emphasizes the integration of technology in the classroom. He uses tools such as Python programming, Dataiku, and generative AI (e.g., ChatGPT) to enhance the learning experience. His goal is to foster a problem-solving mindset in students, preparing them for successful careers in finance and data analytics.</p>
+        </section>
 
         <h2>Courses Developed</h2>
         <ul>
@@ -50,7 +135,7 @@
 
         <h2>Contact Information</h2>
         <p>For more information or to get in touch with Dr. Zhang, please email <a href="mailto:xzhang@walton.uark.edu">xzhang at walton uark</a></p>
-    </main>
+    </div>
 
     <footer class="container text-center">
         <p>&copy; 2024 Cinder Zhang. All rights reserved. Contact us at <a href="mailto:xzhang@walton.uark.edu">xzhang at walton uark</a></p>
