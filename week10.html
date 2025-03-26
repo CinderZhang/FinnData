@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 10: Portfolio Optimization</title>
+    <title>Week 11: Algorithmic Trading</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <style>
         .key-concept {
@@ -62,108 +62,155 @@
 
     <div class="container">
         <div class="key-concept">
-            <h2>Week 10: Portfolio Optimization</h2>
-            <p class="lead">Learn how to implement Modern Portfolio Theory (MPT) and optimize investment portfolios using Python.</p>
+            <h2>Week 11: Algorithmic Trading</h2>
+            <p class="lead">Learn how to develop, implement, and backtest algorithmic trading strategies using Python.</p>
         </div>
 
         <h3>Learning Objectives:</h3>
         <ul>
-            <li>✓ Understand Modern Portfolio Theory and its components</li>
-            <li>✓ Learn to calculate portfolio risk and return</li>
-            <li>✓ Implement portfolio optimization algorithms</li>
-            <li>✓ Create efficient frontier visualizations</li>
-            <li>✓ Apply optimization techniques to real market data</li>
+            <li>✓ Understand the fundamentals of algorithmic trading</li>
+            <li>✓ Learn to implement basic trading strategies</li>
+            <li>✓ Master backtesting techniques</li>
+            <li>✓ Analyze trading performance metrics</li>
+            <li>✓ Handle market data for trading systems</li>
         </ul>
 
         <div class="resource-link">
-            <h4>1. Foundations of Portfolio Optimization</h4>
-            <p>Start with these fundamental resources:</p>
+            <h4>1. Algorithmic Trading Fundamentals</h4>
+            <p>Start with these essential resources:</p>
             <ul>
-                <li><a href="https://youtu.be/MGOSTRwQpZQ?si=OsMOYImz08WvHS-Q" target="_blank">Optimization: Background and Foundations</a> - Essential video lecture</li>
-                <li><a href="https://www.investopedia.com/managing-wealth/achieve-optimal-asset-allocation/" target="_blank">Portfolio Optimization</a> - Comprehensive overview</li>
+                <li><a href="https://www.investopedia.com/articles/active-trading/101014/basics-algorithmic-trading-concepts-and-examples.asp" target="_blank">Basics of Algorithmic Trading</a> - Comprehensive overview</li>
+                <li><a href="https://youtu.be/GDMkkmkJigw?si=vVXguXq6wsgONTpl" target="_blank">Algorithmic Trading with Python</a> - Detailed 3-hour tutorial</li>
             </ul>
             <div class="code-example">
                 <pre>
-import numpy as np
 import pandas as pd
+import numpy as np
 import yfinance as yf
 
 # Download stock data
-tickers = ['AAPL', 'MSFT', 'GOOGL', 'AMZN']
-data = pd.DataFrame()
-for ticker in tickers:
-    data[ticker] = yf.download(ticker)['Adj Close']
+symbol = 'AAPL'
+data = yf.download(symbol, start='2020-01-01')
 
-# Calculate returns and covariance
-returns = data.pct_change()
-cov_matrix = returns.cov() * 252  # Annualized covariance</pre>
+# Calculate moving averages
+data['SMA20'] = data['Close'].rolling(window=20).mean()
+data['SMA50'] = data['Close'].rolling(window=50).mean()
+
+# Generate signals
+data['Signal'] = np.where(data['SMA20'] > data['SMA50'], 1, -1)</pre>
             </div>
         </div>
 
         <div class="resource-link">
-            <h4>2. Practical Implementation</h4>
-            <p>Learn how to implement portfolio optimization in Python:</p>
+            <h4>2. Strategy Implementation</h4>
+            <p>Learn from practical examples:</p>
             <ul>
-                <li><a href="https://towardsdatascience.com/efficient-frontier-portfolio-optimisation-in-python-e7844051e7f" target="_blank">Efficient Frontier & Portfolio Optimization in Python</a> - Step-by-step tutorial</li>
-                <li><a href="https://lectures.scientific-python.org/" target="_blank">Extended Reading: Scientific Python</a> - Advanced concepts</li>
+                <li><a href="https://github.com/CinderZhang/FinnData/blob/main/code/BacktestingPY_example_SMA.ipynb" target="_blank">Code Sample: SMA Strategy</a> - Complete working example</li>
             </ul>
             <div class="code-example">
                 <pre>
-from scipy.optimize import minimize
+# Calculate strategy returns
+data['Returns'] = data['Close'].pct_change()
+data['Strategy'] = data['Signal'].shift(1) * data['Returns']
 
-def portfolio_stats(weights, returns, cov):
-    portfolio_return = np.sum(returns.mean() * weights) * 252
-    portfolio_std = np.sqrt(np.dot(weights.T, np.dot(cov, weights)))
-    return portfolio_return, portfolio_std
+# Calculate cumulative returns
+data['Cumulative_Market'] = (1 + data['Returns']).cumprod()
+data['Cumulative_Strategy'] = (1 + data['Strategy']).cumprod()
 
-# Minimize negative Sharpe Ratio
-def neg_sharpe_ratio(weights):
-    p_ret, p_std = portfolio_stats(weights, returns, cov_matrix)
-    return -(p_ret - risk_free_rate) / p_std  # Negative SR for minimization</pre>
+# Calculate performance metrics
+sharpe_ratio = np.sqrt(252) * data['Strategy'].mean() / data['Strategy'].std()
+max_drawdown = (data['Cumulative_Strategy'].cummax() - data['Cumulative_Strategy']).max()</pre>
+            </div>
+        </div>
+
+        <div class="resource-link">
+            <h4>3. Popular Backtesting Frameworks</h4>
+            <p>Explore these Python backtesting libraries:</p>
+            <ul>
+                <li><a href="https://kernc.github.io/backtesting.py/" target="_blank">Backtesting.py</a> - Simple and efficient backtesting</li>
+                <li><a href="https://www.backtrader.com/" target="_blank">Backtrader</a> - Feature-rich framework with live trading support</li>
+                <li><a href="https://github.com/ranaroussi/quantstats" target="_blank">QuantStats</a> - Portfolio analytics and risk metrics</li>
+                <li><a href="https://www.zipline.io/" target="_blank">Zipline</a> - Algorithmic trading library from Quantopian</li>
+                <li><a href="https://gbeced.github.io/pyalgotrade/" target="_blank">PyAlgoTrade</a> - Event-driven algorithmic trading</li>
+                <li><a href="https://github.com/mementum/bta-lib" target="_blank">BTA-Lib</a> - Technical analysis library</li>
+            </ul>
+            <div class="research-tip">
+                <p>📚 <strong>Learning Tip:</strong> Compare different frameworks by:</p>
+                <ol>
+                    <li>Reading their documentation</li>
+                    <li>Trying their example code</li>
+                    <li>Checking their GitHub stars and issues</li>
+                    <li>Testing with your own simple strategy</li>
+                </ol>
             </div>
         </div>
 
         <div class="chatgpt-tip">
             <h4>💡 ChatGPT Learning Tips</h4>
-            <p>Use these prompts to enhance your understanding of portfolio optimization:</p>
+            <p>Use these prompts to enhance your understanding of algorithmic trading:</p>
             <ol>
-                <li>"Explain Modern Portfolio Theory and its key assumptions"</li>
-                <li>"Show me how to calculate portfolio risk and return in Python"</li>
-                <li>"Write code to implement the Efficient Frontier using scipy.optimize"</li>
-                <li>"How can I incorporate risk-free rate in portfolio optimization?"</li>
-                <li>"What are the limitations of MPT and how can we address them?"</li>
+                <li>"Explain the components of a basic algorithmic trading system"</li>
+                <li>"Show me how to implement a simple moving average crossover strategy"</li>
+                <li>"What are the key performance metrics for evaluating trading strategies?"</li>
+                <li>"Compare different Python backtesting frameworks: Backtesting.py vs Backtrader vs Zipline"</li>
+                <li>"What are common pitfalls in backtesting and how to avoid them?"</li>
             </ol>
             <div class="research-tip">
-                <p>📚 <strong>Research Tip:</strong> Use <a href="https://www.perplexity.ai/" target="_blank">Perplexity.ai</a> to search for "Modern Portfolio Theory Python implementation" or "portfolio optimization techniques"</p>
+                <p>📚 <strong>Self-Learning Resources:</strong></p>
+                <ul>
+                    <li>Use <a href="https://www.perplexity.ai/" target="_blank">Perplexity.ai</a> to search for:</li>
+                    <ul>
+                        <li>"Best Python backtesting frameworks comparison"</li>
+                        <li>"Algorithmic trading strategy implementation Python"</li>
+                        <li>"Common backtesting mistakes to avoid"</li>
+                    </ul>
+                    <li>Search on GitHub for:</li>
+                    <ul>
+                        <li>"algorithmic trading python"</li>
+                        <li>"trading strategy backtest"</li>
+                        <li>"quantitative finance python"</li>
+                    </ul>
+                    <li>Follow these YouTube channels:</li>
+                    <ul>
+                        <li>Part Time Larry</li>
+                        <li>QuantPy</li>
+                        <li>Algovibes</li>
+                    </ul>
+                </ul>
             </div>
         </div>
 
         <div class="exercise">
-            <h4>Weekly Project: Portfolio Optimization Tool</h4>
-            <p>Create a comprehensive portfolio optimization tool that includes:</p>
+            <h4>Weekly Project: Trading Strategy Development</h4>
+            <p>Create a complete algorithmic trading system that includes:</p>
             <ol>
-                <li>Data collection and preprocessing for a set of stocks</li>
-                <li>Risk and return calculations</li>
-                <li>Efficient frontier visualization</li>
-                <li>Optimal portfolio weights calculation</li>
-                <li>Performance comparison with benchmark indices</li>
+                <li>Data collection and preprocessing</li>
+                <li>Strategy implementation (e.g., moving average crossover)</li>
+                <li>Backtesting framework</li>
+                <li>Performance analysis and visualization</li>
+                <li>Optional: Risk management rules</li>
             </ol>
-            <p>Use the video lecture and provided resources as references for your implementation.</p>
+            <p>Use the provided code samples and video tutorial as references for your implementation.</p>
         </div>
 
         <h3>Additional Resources</h3>
         <ul>
-            <li><a href="https://youtu.be/MGOSTRwQpZQ?si=OsMOYImz08WvHS-Q" target="_blank">Watch and summarize the optimization lecture</a></li>
-            <li><a href="https://www.investopedia.com/managing-wealth/achieve-optimal-asset-allocation/" target="_blank">Investopedia: Portfolio Optimization Guide</a></li>
-            <li><a href="https://towardsdatascience.com/efficient-frontier-portfolio-optimisation-in-python-e7844051e7f" target="_blank">Python Implementation Tutorial</a></li>
-            <li><a href="https://lectures.scientific-python.org/" target="_blank">Scientific Python Lectures</a></li>
+            <li><a href="https://www.investopedia.com/articles/active-trading/101014/basics-algorithmic-trading-concepts-and-examples.asp" target="_blank">Investopedia: Algorithmic Trading Basics</a></li>
+            <li><a href="https://github.com/CinderZhang/FinnData/blob/main/code/BacktestingPY_example_SMA.ipynb" target="_blank">SMA Strategy Implementation Example</a></li>
+            <li><a href="https://youtu.be/GDMkkmkJigw?si=vVXguXq6wsgONTpl" target="_blank">Comprehensive Video Tutorial (3 hours)</a></li>
+            <li><strong>Community Resources:</strong></li>
+            <ul>
+                <li><a href="https://www.reddit.com/r/algotrading/" target="_blank">r/algotrading</a> - Active community for algorithmic trading</li>
+                <li><a href="https://www.quantstart.com/" target="_blank">QuantStart</a> - Educational articles and tutorials</li>
+                <li><a href="https://www.quantopian.com/lectures" target="_blank">Quantopian Lectures</a> - Archive of quantitative finance lectures</li>
+            </ul>
         </ul>
     </div>
     
     <div style="text-align: center; margin-top: 20px;">
-        <a href="week9.html">← Previous Week</a>
+        <a href="week10.html">← Previous Week</a>
         |
-        <a href="week11.html">Next Week →</a>
+        <a href="week12.html">Next Week →</a>
     </div>
 
     <div class="back-to-home">
